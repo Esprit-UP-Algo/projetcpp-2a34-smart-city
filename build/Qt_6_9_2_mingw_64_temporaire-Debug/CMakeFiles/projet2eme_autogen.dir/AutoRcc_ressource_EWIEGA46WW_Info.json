@@ -1,0 +1,25 @@
+{
+	"BUILD_DIR" : "C:/Users/anisk/OneDrive/Documents/projet2eme/build/Qt_6_9_2_mingw_64_temporaire-Debug/projet2eme_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/anisk/OneDrive/Documents/projet2eme/build/Qt_6_9_2_mingw_64_temporaire-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/anisk/OneDrive/Documents/projet2eme/build/Qt_6_9_2_mingw_64_temporaire-Debug",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/anisk/OneDrive/Documents/projet2eme",
+	"CMAKE_SOURCE_DIR" : "C:/Users/anisk/OneDrive/Documents/projet2eme",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "MinGW Makefiles",
+	"INCLUDE_DIR" : "C:/Users/anisk/OneDrive/Documents/projet2eme/build/Qt_6_9_2_mingw_64_temporaire-Debug/projet2eme_autogen/include",
+	"INPUTS" : 
+	[
+		"C:/Users/anisk/OneDrive/Documents/projet2eme/helabhima-removebg-preview.png"
+	],
+	"LOCK_FILE" : "C:/Users/anisk/OneDrive/Documents/projet2eme/build/Qt_6_9_2_mingw_64_temporaire-Debug/CMakeFiles/projet2eme_autogen.dir/AutoRcc_ressource_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "--no-zstd", "-name", "ressource" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_ressource.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt6.7.3/6.9.2/mingw_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "C:/Users/anisk/OneDrive/Documents/projet2eme/build/Qt_6_9_2_mingw_64_temporaire-Debug/CMakeFiles/projet2eme_autogen.dir/AutoRcc_ressource_EWIEGA46WW_Used.txt",
+	"SOURCE" : "C:/Users/anisk/OneDrive/Documents/projet2eme/ressource.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

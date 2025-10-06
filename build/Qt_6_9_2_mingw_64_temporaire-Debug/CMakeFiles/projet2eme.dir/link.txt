@@ -1,0 +1,3 @@
+C:\Qt6.7.3\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\projet2eme.dir/objects.a
+C:\Qt6.7.3\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\projet2eme.dir/objects.a @CMakeFiles\projet2eme.dir\objects1.rsp
+C:\Qt6.7.3\Tools\mingw1310_64\bin\g++.exe -DQT_QML_DEBUG -g -mwindows -Wl,--whole-archive CMakeFiles\projet2eme.dir/objects.a -Wl,--no-whole-archive -o projet2eme.exe -Wl,--out-implib,libprojet2eme.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\projet2eme.dir\linkLibs.rsp

@@ -1,0 +1,10 @@
+# ninja log v6
+7	93	7804165307909638	C:/Users/anisk/OneDrive/Documents/projet2eme/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/CMakeFiles/cmake.verify_globs	945dcd3631641683
+95	710	7804165314246562	projet2eme_autogen/timestamp	b054ecd5e1c17829
+95	710	7804165314246562	projet2eme_autogen/mocs_compilation.cpp	b054ecd5e1c17829
+95	710	7804165314246562	C:/Users/anisk/OneDrive/Documents/projet2eme/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/projet2eme_autogen/timestamp	b054ecd5e1c17829
+95	710	7804165314246562	C:/Users/anisk/OneDrive/Documents/projet2eme/build/Desktop_Qt_6_9_2_MinGW_64_bit-Debug/projet2eme_autogen/mocs_compilation.cpp	b054ecd5e1c17829
+719	2203	7804165315037380	CMakeFiles/projet2eme.dir/projet2eme_autogen/mocs_compilation.cpp.obj	f828dbb86904eaed
+730	2313	7804165315147484	CMakeFiles/projet2eme.dir/main.cpp.obj	98af0f144d46ec69
+744	2699	7804165315287424	CMakeFiles/projet2eme.dir/mainwindow.cpp.obj	aac986da7985dbcb
+2700	2971	7804165334838208	projet2eme.exe	1a5ca2b93d87e7
