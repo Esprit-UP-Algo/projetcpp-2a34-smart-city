@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="74A1A478-D18D-FC6E-67BD-8FD1D4E195E5" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="DECHET">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>DECHET</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_DEC" id="E754B088-537C-E75B-E07D-761C0EDBD601">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>ID_DEC</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_LOCAL" id="2DD9127C-4608-85B2-F65E-C9DA3380164F">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>ID_LOCAL</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOM_DEC" id="2F0DEB7D-C779-7185-A497-86987767B292">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>NOM_DEC</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATEC" id="10382BA5-ACA4-EB8C-CEF2-AB11D21A1993">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>DATEC</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LIEUDECOLLECTE" id="0F6866B0-D10D-C189-62D1-E158C9DA72F0">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>LIEUDECOLLECTE</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VOLUMEPOIDS" id="CD93344C-E4D5-9A44-C155-2020BDD90FE5">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>VOLUMEPOIDS</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ETATDEC" id="73B5D54E-1CFA-FAA2-7F2D-FC380A6DCD7C">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>ETATDEC</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDLOCAL" id="FEFC4581-97DA-6BAF-A33F-238AA63886E9">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DECHET</sourceObjSchema>
+<sourceObjName>IDLOCAL</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="683F02F8-4B2F-E67E-884F-21944F0EF974" name="DECHET_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>DECHET_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2DD9127C-4608-85B2-F65E-C9DA3380164F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A030BA12-BEA0-A6AC-C7E7-408B9A4439F3" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="DECHET_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>DECHET_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2DD9127C-4608-85B2-F65E-C9DA3380164F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

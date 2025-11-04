@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0C998890-CBAD-11CE-50ED-FC8EBBA0FDEF" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="EMPLOYÉ">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>EMPLOYÉ</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDEMP" id="A47389FF-8604-4281-CB00-D8A28E84BEFE">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EMPLOYÉ</sourceObjSchema>
+<sourceObjName>IDEMP</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOM" id="E9C3B0D1-3518-290C-8982-5CFF14C6A2BC">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EMPLOYÉ</sourceObjSchema>
+<sourceObjName>NOM</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRENOM" id="6E2EDEE3-F192-FAA3-1C1D-5B1287AD2646">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EMPLOYÉ</sourceObjSchema>
+<sourceObjName>PRENOM</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MOT_DE_PASSE" id="3101934B-3F5C-F5DD-66E5-5599AE9CB125">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EMPLOYÉ</sourceObjSchema>
+<sourceObjName>MOT_DE_PASSE</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="7D86C614-B68A-54E8-E34C-181CB4916202">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EMPLOYÉ</sourceObjSchema>
+<sourceObjName>EMAIL</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="N_TEL" id="5EFCE5E7-7FF9-06ED-D6EF-F96BECD4F175">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EMPLOYÉ</sourceObjSchema>
+<sourceObjName>N_TEL</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="453552F8-6BB5-DDDE-E42D-ECE1073894CD" name="EMPLOYÉ_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>EMPLOYÉ_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A47389FF-8604-4281-CB00-D8A28E84BEFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6AB2733D-21CA-D58F-388B-8838E6AC65DF" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="EMPLOYÉ_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>EMPLOYÉ_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A47389FF-8604-4281-CB00-D8A28E84BEFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

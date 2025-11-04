@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="TRG_ALERTE_ID" directorySegmentName="seg_0" id="11CB1D68-EBD9-E766-47CC-B4D6C2085285">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>TRG_ALERTE_ID</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[BEGIN
+  :NEW.ID := SEQ_ALERTE.NEXTVAL;
+END;
+]]></body>
+<triggerTime>BEFORE</triggerTime>
+<owner>5EDDFFD2-2F64-FA02-2303-892C7B7BF8FF</owner>
+<table>41328C6E-BBDB-8259-190D-77D3722503DF</table>
+</TriggerOraclev10g>

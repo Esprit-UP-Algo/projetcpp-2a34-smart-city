@@ -1,0 +1,175 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="95F61977-B207-AD50-FD8E-E30C5699EB10" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="LOCAUX">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>LOCAUX</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_LOCAL" id="341D4A04-2A2F-65D4-44E1-9BC1D85A816B">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>ID_LOCAL</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDEMP" id="614E4B06-C0BE-3CB4-DC94-311A6BC437A8">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>IDEMP</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOM_PROP" id="A4FD2346-EF7F-C6E2-4F25-668D1408EA6C">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>NOM_PROP</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AIRE" id="C6F4F611-9277-4C79-408B-2F3DDC936049">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>AIRE</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LOCALISATION_PARK" id="F704EB60-B686-8123-1E87-47767BE64D52">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>LOCALISATION_PARK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NB_CHAMBRES" id="F75BCC38-1796-D888-BC21-7D84D2FA0030">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>NB_CHAMBRES</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYPEPARK" id="CEF84B85-E894-E771-F66B-6D5B47D64F06">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>TYPEPARK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUT_PARK" id="2DFFEA08-A644-575E-D03C-97448AA04547">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>STATUT_PARK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRIX" id="78F1E00D-C63A-0170-85D4-4115ADFCBF6F">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>LOCAUX</sourceObjSchema>
+<sourceObjName>PRIX</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5367051C-D85E-8FAD-2571-D6D45ACC69E6" name="LOCAUX_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>LOCAUX_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="614E4B06-C0BE-3CB4-DC94-311A6BC437A8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1DCED07E-FCEB-3C11-FF3E-F0D6690AD578" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="LOCAUX_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>LOCAUX_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="614E4B06-C0BE-3CB4-DC94-311A6BC437A8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

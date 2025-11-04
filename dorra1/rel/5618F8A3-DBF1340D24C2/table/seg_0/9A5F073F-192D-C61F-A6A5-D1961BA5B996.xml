@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9A5F073F-192D-C61F-A6A5-D1961BA5B996" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="EQUIPEMENT">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>EQUIPEMENT</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_EQ" id="C6C9E929-5824-EA7B-F205-4D5C22772472">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EQUIPEMENT</sourceObjSchema>
+<sourceObjName>ID_EQ</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDEMP" id="0C0531E6-5FC0-770E-B140-33A525ED8BB7">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EQUIPEMENT</sourceObjSchema>
+<sourceObjName>IDEMP</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMEQ" id="2F243A13-8610-7EF3-EA84-861F0886032D">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EQUIPEMENT</sourceObjSchema>
+<sourceObjName>NOMEQ</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CONSOMATION" id="A2459254-5409-8AFE-3924-545353FA23FA">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>EQUIPEMENT</sourceObjSchema>
+<sourceObjName>CONSOMATION</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8A782EA8-A00D-2419-B73C-65F1F736575D" name="EQUIPEMENT_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>EQUIPEMENT_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C0531E6-5FC0-770E-B140-33A525ED8BB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B95051B-E62B-5748-52F8-C9DE6AC33AB7" schemaObject="C68490AD-1F7D-C48B-08C5-E17092B85B79" name="EQUIPEMENT_PK">
+<sourceConnName>TestOracke</sourceConnName>
+<sourceObjSchema>DORRA</sourceObjSchema>
+<sourceObjName>EQUIPEMENT_PK</sourceObjName>
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0C0531E6-5FC0-770E-B140-33A525ED8BB7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

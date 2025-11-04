@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="PARKING" directorySegmentName="seg_0" id="EC3222D1-0E32-6845-AAA7-9EFEBA0CEA2D">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<schemaObject>C68490AD-1F7D-C48B-08C5-E17092B85B79</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7E8E2C38-C047-9E37-E900-42961B86790F</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CAPACITÉ" id="0D947A9F-F175-23BF-C20E-319D9C35D323">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="LOCALISATIONPARK" id="4D87FCF6-9567-3552-DB14-FC05FA4606C5">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PLACE_LIBRES" id="4FC35EC1-A158-1FD7-88E1-98BE34963E50">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOMPARK" id="5B02E642-CD85-ECEB-A5AD-B1C0EBE9C8D8">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="IDEMP" id="74AD3EC2-8C68-9E6C-92AF-85E35EEB3796">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_PARK" id="ACD45BBC-FEB5-4B04-15B2-5A7938CE44C7">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATUT_PARK" id="B2282921-FD93-6382-E60E-7D9B91E590A2">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TYPE_PARK" id="EB261E2C-BF0F-F21E-54A9-D5B7AADC7009">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TARIFICATION" id="FE4CBBEE-31A8-CDF5-4C16-1C5403FE5E29">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="PARKING_PK" id="C4F4AAA4-63B2-8848-635C-F852EFA0A144">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<schemaObject>C68490AD-1F7D-C48B-08C5-E17092B85B79</schemaObject>
+<segment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PARKING_PK" id="FBDF1954-34C9-C70F-3B85-9828185DDD2C">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<segment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+<existingIndex>C4F4AAA4-63B2-8848-635C-F852EFA0A144</existingIndex>
+<indexSegment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

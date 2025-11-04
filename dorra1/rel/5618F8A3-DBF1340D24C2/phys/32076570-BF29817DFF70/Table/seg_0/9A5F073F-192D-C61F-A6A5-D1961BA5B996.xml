@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="EQUIPEMENT" directorySegmentName="seg_0" id="9A5F073F-192D-C61F-A6A5-D1961BA5B996">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<schemaObject>C68490AD-1F7D-C48B-08C5-E17092B85B79</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7E8E2C38-C047-9E37-E900-42961B86790F</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="IDEMP" id="0C0531E6-5FC0-770E-B140-33A525ED8BB7">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOMEQ" id="2F243A13-8610-7EF3-EA84-861F0886032D">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CONSOMATION" id="A2459254-5409-8AFE-3924-545353FA23FA">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_EQ" id="C6C9E929-5824-EA7B-F205-4D5C22772472">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="EQUIPEMENT_PK" id="6B95051B-E62B-5748-52F8-C9DE6AC33AB7">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<schemaObject>C68490AD-1F7D-C48B-08C5-E17092B85B79</schemaObject>
+<segment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="EQUIPEMENT_PK" id="8A782EA8-A00D-2419-B73C-65F1F736575D">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<segment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+<existingIndex>6B95051B-E62B-5748-52F8-C9DE6AC33AB7</existingIndex>
+<indexSegment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

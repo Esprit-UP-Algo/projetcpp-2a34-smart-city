@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="ALERTE" directorySegmentName="seg_0" id="41328C6E-BBDB-8259-190D-77D3722503DF">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<schemaObject>C68490AD-1F7D-C48B-08C5-E17092B85B79</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>7E8E2C38-C047-9E37-E900-42961B86790F</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="IDEMP" id="1C797A64-FFAB-D3F2-93A2-4486BF9636C9">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLIENT" id="5DCF8FAE-70A9-F376-681F-0FFDA3017629">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DESCRIPTION" id="636BC77A-F49C-4783-5450-FAB406BA5C4A">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="STATUT" id="7893DFF1-3B44-136D-0BF1-5897F5D8C72C">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="GRAVITE" id="7C4CAA26-00C3-608B-806F-CD1261C5D35E">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TYPE" id="86596E5D-4BBC-8DE6-5459-7ECF94B8ACBB">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="B9A547D1-2D4C-DA4C-E593-6B9E7DF60ADF">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DATEE" id="FF50DD1C-4106-036B-9192-2248A3260E0A">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="ALERTE_PK" id="8983A9D8-56CE-8876-8BFE-3B823CD67D48">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:47 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<schemaObject>C68490AD-1F7D-C48B-08C5-E17092B85B79</schemaObject>
+<segment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="ALERTE_PK" id="9CA462B9-3EF8-2B5B-0979-690DECEC568A">
+<createdBy>USER</createdBy>
+<createdTime>2025-11-03 13:34:48 UTC</createdTime>
+<ownerDesignName>dorra1</ownerDesignName>
+<segment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</segment>
+<tableSpace>C7AB3A12-02C2-75C0-647D-7E8F605F37E4</tableSpace>
+<existingIndex>8983A9D8-56CE-8876-8BFE-3B823CD67D48</existingIndex>
+<indexSegment>2E54267E-D5CD-1F0C-507B-EC8D60D83A15</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>
