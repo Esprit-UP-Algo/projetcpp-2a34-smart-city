@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-de4bc5a1d8b39c061ea4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "malek",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "malek::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-malek-Debug-cc9a5a999227c8af44b4.json",
+					"name" : "malek",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "malek_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-malek_autogen-Debug-6410e19f844662f31aa9.json",
+					"name" : "malek_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "malek_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-malek_autogen_timestamp_deps-Debug-6c9711ddc83073084435.json",
+					"name" : "malek_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/malek/OneDrive/Bureau/malek/build/Desktop_Qt_6_7_3_llvm_mingw_64_bit-Debug",
+		"source" : "C:/Users/malek/OneDrive/Bureau/malek"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
