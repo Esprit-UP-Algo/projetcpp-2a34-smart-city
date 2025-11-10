@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1645</width>
+    <height>977</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton_stat">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>580</y>
+      <width>120</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      QPushButton {
+          background-color: #4CAF50;
+          color: white;
+          border-radius: 6px;
+          padding: 6px;
+      }
+      QPushButton:hover {
+          background-color: #45a049;
+      }
+     </string>
+    </property>
+    <property name="text">
+     <string>📊 Statistiques</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_trie">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>190</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      QPushButton {
+          background-color: #4CAF50;
+          color: white;
+          border-radius: 6px;
+          padding: 6px;
+      }
+      QPushButton:hover {
+          background-color: #45a049;
+      }
+     </string>
+    </property>
+    <property name="text">
+     <string>🔤 Trier</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>40</y>
+      <width>241</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 20pt &quot;Segoe UI&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Smart city </string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_supprimer">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>580</y>
+      <width>120</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      QPushButton {
+          background-color: #4CAF50;
+          color: white;
+          border-radius: 6px;
+          padding: 6px;
+      }
+      QPushButton:hover {
+          background-color: #45a049;
+      }
+     </string>
+    </property>
+    <property name="text">
+     <string>🗑 Supprimer</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>230</y>
+      <width>601</width>
+      <height>341</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(217, 244, 255);
+color: rgb(0, 0, 0);
+border-color: rgb(51, 153, 255);</string>
+    </property>
+    <column>
+     <property name="text">
+      <string>Cn</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Date de collecte</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Lieu de collecte</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Etat</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>192</y>
+      <width>340</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>➕ Ajouter</string>
+     </attribute>
+     <widget class="QLabel" name="label_nom">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cn</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_nom">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>30</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_date">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Date de collecte</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_lieu">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lieu de collecte</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_lieu">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>110</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_volume">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Volume/Poids</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_volume">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>150</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_etat">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>État</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_etat">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>190</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_ajouter">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>310</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>✔ Ajouter</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_annuler">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>310</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>✖ Annuler</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="dateEdit">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>70</y>
+        <width>181</width>
+        <height>29</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>✏ Modifier</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_modifier">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>260</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>✔ valider</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_annuler_m">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>260</y>
+        <width>120</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>✖ Annuler</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_etat_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>180</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_nom_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cn</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_lieu_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>100</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lieu de collecte</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_date_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Date de collecte</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_etat_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>111</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>État</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_volume_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>140</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_lieu_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_nom_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>20</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_volume_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>121</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Volume/Poids</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_volume_4">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>100</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_etat_4">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>140</y>
+        <width>180</width>
+        <height>28</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>258</x>
+        <y>-233</y>
+        <width>120</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>ajouter</string>
+      </property>
+     </widget>
+     <widget class="QDateEdit" name="lineEdit_date_3">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>58</y>
+        <width>181</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="logo">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>20</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>:/helabhima-removebg-preview.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_pdf">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>580</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+      QPushButton {
+          background-color: #4CAF50;
+          color: white;
+          border-radius: 6px;
+          padding: 6px;
+      }
+      QPushButton:hover {
+          background-color: #45a049;
+      }
+     </string>
+    </property>
+    <property name="text">
+     <string>📄 PDF</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>190</y>
+      <width>82</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>cn</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>localisation</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string/>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_recherche">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>190</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>🔍 Recherche</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_recherche">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>190</y>
+      <width>200</width>
+      <height>28</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1645</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
