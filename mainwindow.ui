@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1380</width>
+    <height>714</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Gestion des Clients</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+    background-color: #e6f7f5; /* light greenish background */
+    color: #003366; /* dark blue text */
+    font-size: 14px;
+}
+
+QPushButton {
+    background-color: #4CAF50; /* green button */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* darker green on hover */
+}
+
+QLineEdit, QTextEdit {
+    background-color: #ffffff;
+    border: 2px solid #3399ff; /* blue border */
+    border-radius: 4px;
+    padding: 4px;
+}
+
+QLineEdit:focus, QTextEdit:focus {
+    border: 2px solid #0066cc; /* darker blue when focused */
+}
+
+QLabel {
+    color: #004d66; /* teal text */
+    font-weight: bold;
+}
+QTabWidget::pane {
+    border: 2px solid #3399ff; /* blue border */
+    border-radius: 6px;
+    background: #e6f7f5; /* light greenish background */
+    padding: 4px;
+}
+
+QTabBar::tab {
+    background: #4CAF50; /* green tabs */
+    color: white;
+    border: 1px solid #3399ff; /* blue border */
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin-right: 2px;
+}
+
+QTabBar::tab:selected {
+    background: #3399ff; /* blue when selected */
+    color: white;
+}
+
+QTabBar::tab:hover {
+    background: #45a049; /* darker green hover */
+}
+QListView {
+    background-color: #ffffff;
+    border: 2px solid #3399ff; /* blue border */
+    border-radius: 6px;
+    padding: 4px;
+    show-decoration-selected: 1; /* highlight whole row */
+}
+
+QListView::item {
+    padding: 6px;
+    border-bottom: 1px solid #e6f7f5; /* subtle divider */
+    color: #003366; /* dark blue text */
+}
+
+QListView::item:selected {
+    background-color: #4CAF50; /* green selection */
+    color: white;
+    border: none;
+}
+
+QListView::item:hover {
+    background-color: #cceeff; /* light blue hover */
+    color: #004d66;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="ajouter_bt">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>80</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ajouter</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_27">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>280</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Statut</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="nom_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>150</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="modifier_bt_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>80</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Modifier</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>0</y>
+      <width>101</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../LOGO SMART CITY.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>310</y>
+      <width>81</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../Downloads/2e5aa8cc-e6fc-460b-b6b1-0e09a951bfdc.jpg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>110</y>
+      <width>851</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string>ID</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>nom</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>localisation</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>capacité</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>places libres</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>statut</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>type</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>tarification</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QLabel" name="label_26">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>240</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Places libres</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="supprimer_bt">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>140</y>
+      <width>131</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>supprimer</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="tri_bt">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>90</y>
+      <width>131</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tri par localisation</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_28">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>310</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Type</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_29">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>340</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tarification</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="capacite_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>210</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="statut_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>270</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="type_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>300</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>80</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Recherche selon localistion</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>80</y>
+      <width>191</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="place_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>240</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>110</y>
+      <width>301</width>
+      <height>301</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_12">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>370</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Annuler</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>180</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>localisation</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="loco_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>180</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pdf_bt">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>190</y>
+      <width>131</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PDF</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_51">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>210</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Capacité</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ajouter_bt_2">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>370</y>
+      <width>93</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ajouter</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>420</y>
+      <width>301</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QTableWidget" name="tableWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>281</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
+    background-color: #ffffff;   /* fond blanc des cellules */
+    border: 2px solid #3399ff;   /* bordure bleue */
+    border-radius: 6px;
+    gridline-color: #e6f7f5;     /* lignes de séparation discrètes */
+    selection-background-color: #4CAF50; /* fond vert quand sélectionné */
+    selection-color: white;      /* texte blanc quand sélectionné */
+    font-size: 13px;
+    color: #003366; /* texte bleu foncé */
+}
+
+QHeaderView::section {
+    background-color: #4CAF50; /* vert pour l'entête */
+    color: white;
+    padding: 6px;
+    border: 1px solid #3399ff; /* contour bleu */
+    font-weight: bold;
+}
+
+QTableWidget::item:hover {
+    background-color: #cceeff;  /* bleu clair au survol */
+    color: #004d66;
+}</string>
+     </property>
+     <row>
+      <property name="text">
+       <string/>
+      </property>
+     </row>
+     <row>
+      <property name="text">
+       <string/>
+      </property>
+     </row>
+     <column>
+      <property name="text">
+       <string>Parking</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Occupation</string>
+      </property>
+     </column>
+     <item row="0" column="0">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="0" column="1">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="1" column="0">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+     <item row="1" column="1">
+      <property name="text">
+       <string/>
+      </property>
+     </item>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>440</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Statistiques</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="tarif_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>330</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>160</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Nom </string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="id_parking">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>120</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>130</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Id</string>
+    </property>
+   </widget>
+   <zorder>ajouter_bt</zorder>
+   <zorder>modifier_bt_2</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_10</zorder>
+   <zorder>tableWidget_2</zorder>
+   <zorder>supprimer_bt</zorder>
+   <zorder>tri_bt</zorder>
+   <zorder>label_2</zorder>
+   <zorder>lineEdit</zorder>
+   <zorder>tableWidget</zorder>
+   <zorder>label_9</zorder>
+   <zorder>loco_parking</zorder>
+   <zorder>pdf_bt</zorder>
+   <zorder>label_51</zorder>
+   <zorder>frame_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label</zorder>
+   <zorder>label_26</zorder>
+   <zorder>place_parking</zorder>
+   <zorder>label_27</zorder>
+   <zorder>statut_parking</zorder>
+   <zorder>label_28</zorder>
+   <zorder>type_parking</zorder>
+   <zorder>label_29</zorder>
+   <zorder>tarif_parking</zorder>
+   <zorder>ajouter_bt_2</zorder>
+   <zorder>pushButton_12</zorder>
+   <zorder>capacite_parking</zorder>
+   <zorder>nom_parking</zorder>
+   <zorder>id_parking</zorder>
+   <zorder>label_5</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1380</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
