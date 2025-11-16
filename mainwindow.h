@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTableWidget>
+#include <QTableWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,9 @@ public:
 
 private slots:
     void on_ajouter_bt_clicked();
+    void on_modifier_bt_clicked();
+    void on_supprimer_bt_clicked();
+    void on_tableWidget_2_itemClicked(QTableWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

@@ -250,9 +250,9 @@ QListView::item:hover {
    <widget class="QPushButton" name="supprimer_bt">
     <property name="geometry">
      <rect>
-      <x>1220</x>
-      <y>140</y>
-      <width>131</width>
+      <x>70</x>
+      <y>370</y>
+      <width>111</width>
       <height>29</height>
      </rect>
     </property>
@@ -270,7 +270,7 @@ QListView::item:hover {
      </rect>
     </property>
     <property name="text">
-     <string>Tri par localisation</string>
+     <string>Trier</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_28">
@@ -437,14 +437,14 @@ QListView::item:hover {
    <widget class="QPushButton" name="ajouter_bt_2">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>370</y>
-      <width>93</width>
+      <x>1220</x>
+      <y>140</y>
+      <width>131</width>
       <height>29</height>
      </rect>
     </property>
     <property name="text">
-     <string>Ajouter</string>
+     <string>rechercher</string>
     </property>
    </widget>
    <widget class="QFrame" name="frame_2">
@@ -597,6 +597,7 @@ QTableWidget::item:hover {
      <string>Id</string>
     </property>
    </widget>
+   <zorder>tableWidget</zorder>
    <zorder>ajouter_bt</zorder>
    <zorder>modifier_bt_2</zorder>
    <zorder>label_4</zorder>
@@ -606,7 +607,6 @@ QTableWidget::item:hover {
    <zorder>tri_bt</zorder>
    <zorder>label_2</zorder>
    <zorder>lineEdit</zorder>
-   <zorder>tableWidget</zorder>
    <zorder>label_9</zorder>
    <zorder>loco_parking</zorder>
    <zorder>pdf_bt</zorder>
