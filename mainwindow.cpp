@@ -6,6 +6,8 @@
 #include <QSqlError>
 #include <QRandomGenerator>
 #include <QDebug>
+#include <QPushButton>
+#include <QWidget>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,12 +16,52 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     qDebug() << "=== DEMARRAGE APPLICATION ===";
+
+    // 🔹 CONNEXIONS MANUELLES DES BOUTONS
+    qDebug() << "Connexion des boutons...";
+
+    if (ui->modifier_bt_2) {
+        connect(ui->modifier_bt_2, &QPushButton::clicked,
+                this, &MainWindow::on_modifier_bt_clicked);
+        qDebug() << "✅ Bouton modifier_bt_2 connecté";
+    } else {
+        qDebug() << "❌ modifier_bt_2 n'existe pas";
+    }
+
+    if (ui->ajouter_bt) {
+        connect(ui->ajouter_bt, &QPushButton::clicked,
+                this, &MainWindow::on_ajouter_bt_clicked);
+        qDebug() << "✅ Bouton ajouter_bt connecté";
+    } else {
+        qDebug() << "❌ ajouter_bt n'existe pas";
+    }
+
+    if (ui->supprimer_bt) {
+        connect(ui->supprimer_bt, &QPushButton::clicked,
+                this, &MainWindow::on_supprimer_bt_clicked);
+        qDebug() << "✅ Bouton supprimer_bt connecté";
+    } else {
+        qDebug() << "❌ supprimer_bt n'existe pas";
+    }
+
+    if (ui->tri_bt) {
+        connect(ui->tri_bt, &QPushButton::clicked,
+                this, &MainWindow::on_tri_bt_clicked);
+        qDebug() << "✅ Bouton tri_bt connecté";
+    } else {
+        qDebug() << "❌ tri_bt n'existe pas";
+    }
+
+    if (ui->ajouter_bt_2) {
+        connect(ui->ajouter_bt_2, &QPushButton::clicked,
+                this, &MainWindow::on_ajouter_bt_2_clicked);
+        qDebug() << "✅ Bouton ajouter_bt_2 (rechercher) connecté";
+    } else {
+        qDebug() << "❌ ajouter_bt_2 n'existe pas";
+    }
+
     qDebug() << "Vérification des widgets...";
 
-    // 🔹 Vérification du tableau principal
-    qDebug() << "tableWidget_2 existe ?" << (ui->tableWidget_2 != nullptr);
-
-    // 🔹 Initialisation du tableau AVANT le chargement
     if (ui->tableWidget_2) {
         qDebug() << "✅ Initialisation de tableWidget_2...";
         ui->tableWidget_2->setColumnCount(8);
@@ -28,7 +70,6 @@ MainWindow::MainWindow(QWidget *parent)
                                "Places libres", "Statut", "Type", "Tarification"};
         ui->tableWidget_2->setHorizontalHeaderLabels(headers);
 
-        // Configuration visuelle
         ui->tableWidget_2->horizontalHeader()->setStretchLastSection(true);
         ui->tableWidget_2->setAlternatingRowColors(true);
         ui->tableWidget_2->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -39,10 +80,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     qDebug() << "Tentative de chargement du tableau...";
-
-    // Chargement initial du tableau
     loadParkingTable();
-
     qDebug() << "=== FIN DEMARRAGE ===";
 }
 
@@ -56,10 +94,9 @@ MainWindow::~MainWindow()
 // =========================
 void MainWindow::on_ajouter_bt_clicked()
 {
-    // Génération d'un ID unique
-    QString idParking = "P" + QString::number(QRandomGenerator::global()->bounded(1000, 9999));
+    qDebug() << "🟢 BOUTON AJOUTER CLIQUÉ";
 
-    // Récupération des champs de ton interface
+    QString idParking = "P" + QString::number(QRandomGenerator::global()->bounded(1000, 9999));
     QString nom          = ui->nom_parking->text().trimmed();
     QString localisation = ui->loco_parking->text().trimmed();
     QString capaciteStr  = ui->capacite_parking->text().trimmed();
@@ -68,7 +105,6 @@ void MainWindow::on_ajouter_bt_clicked()
     QString type         = ui->type_parking->text().trimmed();
     QString tarifStr     = ui->tarif_parking->text().trimmed();
 
-    // Validation
     if (nom.isEmpty() || localisation.isEmpty() || capaciteStr.isEmpty() || tarifStr.isEmpty()) {
         QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires !");
         return;
@@ -93,7 +129,6 @@ void MainWindow::on_ajouter_bt_clicked()
         return;
     }
 
-    // Connexion à la base
     Connection& c = Connection::createInstance();
     QSqlDatabase db = c.getDatabase();
     if (!db.isOpen() && !c.createConnect()) {
@@ -101,7 +136,6 @@ void MainWindow::on_ajouter_bt_clicked()
         return;
     }
 
-    // Insertion SQL
     QSqlQuery query(db);
     query.prepare("INSERT INTO NOUR.PARKING ("
                   "ID_PARKING, NOM, LOCALISATION, CAPACITE, PLACESLIBRES, "
@@ -122,8 +156,6 @@ void MainWindow::on_ajouter_bt_clicked()
 
     if (query.exec()) {
         QMessageBox::information(this, "Succès", "Parking ajouté !\nID : " + idParking);
-
-        // Vider les champs après ajout
         ui->id_parking->clear();
         ui->nom_parking->clear();
         ui->loco_parking->clear();
@@ -132,7 +164,6 @@ void MainWindow::on_ajouter_bt_clicked()
         ui->statut_parking->clear();
         ui->type_parking->clear();
         ui->tarif_parking->clear();
-
         loadParkingTable();
     } else {
         QMessageBox::critical(this, "Erreur Oracle", query.lastError().text());
@@ -140,15 +171,12 @@ void MainWindow::on_ajouter_bt_clicked()
 }
 
 // =========================
-// 🔹 Clic sur une ligne du tableau (pour remplir le formulaire)
+// 🔹 Clic sur ligne
 // =========================
 void MainWindow::on_tableWidget_2_itemClicked(QTableWidgetItem *item)
 {
     if (!item) return;
-
     int row = item->row();
-
-    // Remplir les champs avec les données de la ligne sélectionnée
     ui->id_parking->setText(ui->tableWidget_2->item(row, 0)->text());
     ui->nom_parking->setText(ui->tableWidget_2->item(row, 1)->text());
     ui->loco_parking->setText(ui->tableWidget_2->item(row, 2)->text());
@@ -157,7 +185,6 @@ void MainWindow::on_tableWidget_2_itemClicked(QTableWidgetItem *item)
     ui->statut_parking->setText(ui->tableWidget_2->item(row, 5)->text());
     ui->type_parking->setText(ui->tableWidget_2->item(row, 6)->text());
     ui->tarif_parking->setText(ui->tableWidget_2->item(row, 7)->text());
-
     qDebug() << "Ligne sélectionnée - ID:" << ui->tableWidget_2->item(row, 0)->text();
 }
 
@@ -166,18 +193,14 @@ void MainWindow::on_tableWidget_2_itemClicked(QTableWidgetItem *item)
 // =========================
 void MainWindow::on_modifier_bt_clicked()
 {
-    qDebug() << "=== MODIFICATION ===";
+    qDebug() << "🔵 BOUTON MODIFIER CLIQUÉ";
 
-    // Récupération de l'ID (champ en lecture seule normalement)
     QString idParking = ui->id_parking->text().trimmed();
-
     if (idParking.isEmpty()) {
-        QMessageBox::warning(this, "Attention", "Veuillez sélectionner un parking à modifier !\n\n"
-                                                "Cliquez sur une ligne du tableau pour charger les données.");
+        QMessageBox::warning(this, "Attention", "Veuillez sélectionner un parking à modifier !");
         return;
     }
 
-    // Récupération des champs modifiés
     QString nom          = ui->nom_parking->text().trimmed();
     QString localisation = ui->loco_parking->text().trimmed();
     QString capaciteStr  = ui->capacite_parking->text().trimmed();
@@ -186,7 +209,6 @@ void MainWindow::on_modifier_bt_clicked()
     QString type         = ui->type_parking->text().trimmed();
     QString tarifStr     = ui->tarif_parking->text().trimmed();
 
-    // Validation
     if (nom.isEmpty() || localisation.isEmpty() || capaciteStr.isEmpty() || tarifStr.isEmpty()) {
         QMessageBox::warning(this, "Erreur", "Veuillez remplir tous les champs obligatoires !");
         return;
@@ -211,55 +233,36 @@ void MainWindow::on_modifier_bt_clicked()
         return;
     }
 
-    // Confirmation
-    QMessageBox::StandardButton reply;
-    QString message = QString("Voulez-vous vraiment modifier le parking :\n\n"
-                              "ID : %1\n"
-                              "Nom : %2 ?").arg(idParking, nom);
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Confirmation",
+                                                              QString("Voulez-vous vraiment modifier :\n\nID : %1\nNom : %2 ?").arg(idParking, nom),
+                                                              QMessageBox::Yes | QMessageBox::No);
 
-    reply = QMessageBox::question(this, "Confirmation", message,
-                                  QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::No) return;
 
-    if (reply == QMessageBox::No) {
-        qDebug() << "Modification annulée par l'utilisateur";
-        return;
-    }
-
-    // Connexion à la base
     Connection& c = Connection::createInstance();
     QSqlDatabase db = c.getDatabase();
-
     if (!db.isOpen() && !c.createConnect()) {
         QMessageBox::critical(this, "Erreur", "Connexion à la base échouée !");
         return;
     }
 
-    // Mise à jour SQL
     QSqlQuery query(db);
     query.prepare("UPDATE NOUR.PARKING SET "
-                  "NOM = :nom, "
-                  "LOCALISATION = :localisation, "
-                  "CAPACITE = :capacite, "
-                  "PLACESLIBRES = :placeslibres, "
-                  "STATUT = :statut, "
-                  "TYPE = :type, "
-                  "TARIFICATION = :tarification "
-                  "WHERE ID_PARKING = :id");
+                  "NOM = :nom, LOCALISATION = :localisation, CAPACITE = :capacite, "
+                  "PLACESLIBRES = :placeslibres, STATUT = :statut, TYPE = :type, "
+                  "TARIFICATION = :tarification WHERE ID_PARKING = :id");
 
-    query.bindValue(":id",           idParking);
-    query.bindValue(":nom",          nom);
+    query.bindValue(":id", idParking);
+    query.bindValue(":nom", nom);
     query.bindValue(":localisation", localisation);
-    query.bindValue(":capacite",     capacite);
+    query.bindValue(":capacite", capacite);
     query.bindValue(":placeslibres", placesLibres);
-    query.bindValue(":statut",       statut);
-    query.bindValue(":type",         type);
+    query.bindValue(":statut", statut);
+    query.bindValue(":type", type);
     query.bindValue(":tarification", tarif);
 
     if (query.exec()) {
-        QMessageBox::information(this, "Succès", "Parking modifié avec succès !");
-        qDebug() << "✅ Parking modifié - ID:" << idParking;
-
-        // Vider les champs après modification
+        QMessageBox::information(this, "Succès", "Parking modifié !");
         ui->id_parking->clear();
         ui->nom_parking->clear();
         ui->loco_parking->clear();
@@ -268,12 +271,9 @@ void MainWindow::on_modifier_bt_clicked()
         ui->statut_parking->clear();
         ui->type_parking->clear();
         ui->tarif_parking->clear();
-
-        // Recharger le tableau
         loadParkingTable();
     } else {
-        QMessageBox::critical(this, "Erreur", "Erreur lors de la modification :\n" + query.lastError().text());
-        qDebug() << "❌ Erreur modification:" << query.lastError().text();
+        QMessageBox::critical(this, "Erreur", query.lastError().text());
     }
 }
 
@@ -282,176 +282,183 @@ void MainWindow::on_modifier_bt_clicked()
 // =========================
 void MainWindow::on_supprimer_bt_clicked()
 {
-    qDebug() << "=== SUPPRESSION ===";
+    qDebug() << "🔴 BOUTON SUPPRIMER CLIQUÉ";
 
-    // Vérifier qu'une ligne est sélectionnée
-    QList<QTableWidgetItem*> selectedItems = ui->tableWidget_2->selectedItems();
-
-    if (selectedItems.isEmpty()) {
-        QMessageBox::warning(this, "Attention", "Veuillez sélectionner un parking à supprimer !");
-        return;
-    }
-
-    // Récupérer l'ID du parking sélectionné (colonne 0)
     int selectedRow = ui->tableWidget_2->currentRow();
-
     if (selectedRow < 0) {
-        QMessageBox::warning(this, "Attention", "Veuillez sélectionner une ligne !");
+        QMessageBox::warning(this, "Attention", "Veuillez sélectionner un parking !");
         return;
     }
 
     QString idParking = ui->tableWidget_2->item(selectedRow, 0)->text();
     QString nomParking = ui->tableWidget_2->item(selectedRow, 1)->text();
 
-    qDebug() << "Parking sélectionné - ID:" << idParking << "Nom:" << nomParking;
+    QMessageBox::StandardButton reply = QMessageBox::question(this, "Confirmation",
+                                                              QString("Supprimer :\n\nID : %1\nNom : %2 ?").arg(idParking, nomParking),
+                                                              QMessageBox::Yes | QMessageBox::No);
 
-    // Confirmation de suppression
-    QMessageBox::StandardButton reply;
-    QString message = QString("Voulez-vous vraiment supprimer le parking :\n\n"
-                              "ID : %1\n"
-                              "Nom : %2 ?").arg(idParking, nomParking);
+    if (reply == QMessageBox::No) return;
 
-    reply = QMessageBox::question(this, "Confirmation", message,
-                                  QMessageBox::Yes | QMessageBox::No);
-
-    if (reply == QMessageBox::No) {
-        qDebug() << "Suppression annulée par l'utilisateur";
-        return;
-    }
-
-    // Connexion à la base
     Connection& c = Connection::createInstance();
     QSqlDatabase db = c.getDatabase();
-
     if (!db.isOpen() && !c.createConnect()) {
-        QMessageBox::critical(this, "Erreur", "Connexion à la base échouée !");
+        QMessageBox::critical(this, "Erreur", "Connexion échouée !");
         return;
     }
 
-    // Suppression SQL
     QSqlQuery query(db);
     query.prepare("DELETE FROM NOUR.PARKING WHERE ID_PARKING = :id");
     query.bindValue(":id", idParking);
 
     if (query.exec()) {
-        QMessageBox::information(this, "Succès", "Parking supprimé avec succès !");
-        qDebug() << "✅ Parking supprimé - ID:" << idParking;
-
-        // Recharger le tableau
+        QMessageBox::information(this, "Succès", "Parking supprimé !");
         loadParkingTable();
     } else {
-        QMessageBox::critical(this, "Erreur", "Erreur lors de la suppression :\n" + query.lastError().text());
-        qDebug() << "❌ Erreur suppression:" << query.lastError().text();
+        QMessageBox::critical(this, "Erreur", query.lastError().text());
     }
 }
 
 // =========================
-// 🔹 Chargement du tableau
+// 🔹 Bouton Trier
 // =========================
-void MainWindow::loadParkingTable()
+void MainWindow::on_tri_bt_clicked()
 {
-    qDebug() << "=== DEBUT loadParkingTable() ===";
+    qDebug() << "🟡 BOUTON TRI CLIQUÉ";
+    trierParCapacite();
+}
 
-    // 🔹 Vérification que le tableau existe
-    if (!ui->tableWidget_2) {
-        qDebug() << "❌ ERREUR CRITIQUE : tableWidget_2 n'existe pas !";
-        QMessageBox::critical(this, "Erreur", "Le tableau tableWidget_2 n'existe pas dans l'interface !");
+void MainWindow::trierParCapacite()
+{
+    if (!ui->tableWidget_2) return;
+
+    Connection& c = Connection::createInstance();
+    QSqlDatabase db = c.getDatabase();
+    if (!db.isOpen() && !c.createConnect()) {
+        QMessageBox::critical(this, "Erreur", "Connexion échouée !");
         return;
     }
 
-    qDebug() << "✅ tableWidget_2 existe";
-    qDebug() << "   Colonnes configurées :" << ui->tableWidget_2->columnCount();
-    qDebug() << "   Lignes actuelles :" << ui->tableWidget_2->rowCount();
-
-    // Connexion à la base
-    qDebug() << "Tentative de connexion à la base...";
-    Connection& c = Connection::createInstance();
-    QSqlDatabase db = c.getDatabase();
-
-    if (!db.isOpen()) {
-        qDebug() << "Base fermée, tentative de connexion...";
-        if (!c.createConnect()) {
-            qDebug() << "❌ Connexion à la base impossible.";
-            QMessageBox::warning(this, "Erreur", "Impossible de se connecter à la base de données.");
-            return;
-        }
-    }
-
-    qDebug() << "✅ Connexion à la base OK";
-    qDebug() << "   Driver:" << db.driverName();
-    qDebug() << "   Database:" << db.databaseName();
-
-    // Préparation de la requête
-    qDebug() << "Préparation de la requête SQL...";
     QSqlQuery query(db);
-
-    QString sql = "SELECT ID_PARKING, NOM, LOCALISATION, CAPACITE, PLACESLIBRES, "
-                  "STATUT, TYPE, TARIFICATION "
-                  "FROM NOUR.PARKING ORDER BY ID_PARKING";
-
-    qDebug() << "SQL:" << sql;
-
-    query.prepare(sql);
-
-    qDebug() << "Exécution de la requête...";
-    if (!query.exec()) {
-        qDebug() << "❌ Erreur SQL :" << query.lastError().text();
-        qDebug() << "   Type erreur:" << query.lastError().type();
-        qDebug() << "   Code erreur:" << query.lastError().nativeErrorCode();
+    if (!query.exec("SELECT ID_PARKING, NOM, LOCALISATION, CAPACITE, PLACESLIBRES, "
+                    "STATUT, TYPE, TARIFICATION FROM NOUR.PARKING ORDER BY CAPACITE DESC")) {
         QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
         return;
     }
 
-    qDebug() << "✅ Requête SQL exécutée avec succès";
-
-    // Nettoyage du tableau avant rechargement
-    qDebug() << "Nettoyage du tableau...";
     ui->tableWidget_2->setRowCount(0);
-    ui->tableWidget_2->clearContents();
-    qDebug() << "✅ Tableau nettoyé";
-
     int row = 0;
-    qDebug() << "Parcours des résultats...";
-
     while (query.next()) {
-        qDebug() << "  -> Insertion ligne" << row;
-
-        try {
-            ui->tableWidget_2->insertRow(row);
-
-            // Insertion des données avec vérification
-            for (int col = 0; col < 8; ++col) {
-                QString value = query.value(col).toString();
-                qDebug() << "     Col" << col << "=" << value;
-
-                QTableWidgetItem* item = new QTableWidgetItem(value);
-
-                if (!item) {
-                    qDebug() << "❌ ERREUR: Impossible de créer QTableWidgetItem!";
-                    continue;
-                }
-
-                // Désactiver l'édition
-                item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
-
-                ui->tableWidget_2->setItem(row, col, item);
-            }
-
-            qDebug() << "  ✅ Ligne" << row << "insérée";
-            ++row;
-
-        } catch (const std::exception& e) {
-            qDebug() << "❌ EXCEPTION lors de l'insertion:" << e.what();
-        } catch (...) {
-            qDebug() << "❌ EXCEPTION INCONNUE lors de l'insertion";
+        ui->tableWidget_2->insertRow(row);
+        for (int col = 0; col < 8; ++col) {
+            QTableWidgetItem* item = new QTableWidgetItem(query.value(col).toString());
+            item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+            ui->tableWidget_2->setItem(row, col, item);
         }
+        ++row;
     }
 
-    qDebug() << "Ajustement des colonnes...";
-    // Ajustement des colonnes
     ui->tableWidget_2->resizeColumnsToContents();
-
-    qDebug() << "✅ Tableau chargé avec" << row << "enregistrements.";
-    qDebug() << "=== FIN loadParkingTable() ===";
+    QMessageBox::information(this, "Tri effectué",
+                             QString("Tableau trié par capacité\n%1 parkings").arg(row));
 }
 
+// =========================
+// 🔹 Bouton Rechercher (ajouter_bt_2)
+// =========================
+void MainWindow::on_ajouter_bt_2_clicked()
+{
+    qDebug() << "🔍 BOUTON RECHERCHER CLIQUÉ";
+
+    QString localisation = ui->lineEdit->text().trimmed();
+
+    if (localisation.isEmpty()) {
+        QMessageBox::warning(this, "Attention", "Veuillez entrer une localisation à rechercher !");
+        return;
+    }
+
+    rechercherParLocalisation(localisation);
+}
+
+void MainWindow::rechercherParLocalisation(QString localisation)
+{
+    if (!ui->tableWidget_2) return;
+
+    Connection& c = Connection::createInstance();
+    QSqlDatabase db = c.getDatabase();
+    if (!db.isOpen() && !c.createConnect()) {
+        QMessageBox::critical(this, "Erreur", "Connexion à la base échouée !");
+        return;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT ID_PARKING, NOM, LOCALISATION, CAPACITE, PLACESLIBRES, "
+                  "STATUT, TYPE, TARIFICATION FROM NOUR.PARKING "
+                  "WHERE LOWER(LOCALISATION) LIKE LOWER(:localisation) "
+                  "ORDER BY ID_PARKING");
+
+    query.bindValue(":localisation", "%" + localisation + "%");
+
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
+        return;
+    }
+
+    ui->tableWidget_2->setRowCount(0);
+    int row = 0;
+    while (query.next()) {
+        ui->tableWidget_2->insertRow(row);
+        for (int col = 0; col < 8; ++col) {
+            QTableWidgetItem* item = new QTableWidgetItem(query.value(col).toString());
+            item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+            ui->tableWidget_2->setItem(row, col, item);
+        }
+        ++row;
+    }
+
+    ui->tableWidget_2->resizeColumnsToContents();
+
+    if (row == 0) {
+        QMessageBox::information(this, "Recherche",
+                                 QString("Aucun parking trouvé pour la localisation : %1").arg(localisation));
+        // Recharger tous les parkings si aucun résultat
+        loadParkingTable();
+    } else {
+        QMessageBox::information(this, "Recherche effectuée",
+                                 QString("%1 parking(s) trouvé(s)").arg(row));
+    }
+
+    qDebug() << "✅ Recherche terminée:" << row << "résultat(s)";
+}
+
+// =========================
+// 🔹 Chargement tableau
+// =========================
+void MainWindow::loadParkingTable()
+{
+    if (!ui->tableWidget_2) return;
+
+    Connection& c = Connection::createInstance();
+    QSqlDatabase db = c.getDatabase();
+    if (!db.isOpen() && !c.createConnect()) return;
+
+    QSqlQuery query(db);
+    if (!query.exec("SELECT ID_PARKING, NOM, LOCALISATION, CAPACITE, PLACESLIBRES, "
+                    "STATUT, TYPE, TARIFICATION FROM NOUR.PARKING ORDER BY ID_PARKING")) {
+        return;
+    }
+
+    ui->tableWidget_2->setRowCount(0);
+    int row = 0;
+    while (query.next()) {
+        ui->tableWidget_2->insertRow(row);
+        for (int col = 0; col < 8; ++col) {
+            QTableWidgetItem* item = new QTableWidgetItem(query.value(col).toString());
+            item->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+            ui->tableWidget_2->setItem(row, col, item);
+        }
+        ++row;
+    }
+
+    ui->tableWidget_2->resizeColumnsToContents();
+    qDebug() << "✅ Tableau chargé:" << row << "lignes";
+}
