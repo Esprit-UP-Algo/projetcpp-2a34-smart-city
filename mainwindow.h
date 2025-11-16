@@ -26,7 +26,7 @@ private slots:
     void on_tab_emp_clicked(const QModelIndex &index);
     void on_modifier_clicked();
     void on_supprimer_clicked();
-    void on_pushButton_3_clicked();  // Tri par nom
+    void on_comboBox_currentIndexChanged(int index);  // Nouvelle slot pour le tri
     void on_pushButton_5_clicked();  // Export PDF
     void on_pushButton_6_clicked();  // Annuler (Modifier)
     void on_pushButton_7_clicked();  // Annuler (Ajouter)

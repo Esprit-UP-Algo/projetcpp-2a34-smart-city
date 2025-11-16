@@ -32,6 +32,10 @@ MainWindow::MainWindow(QWidget *parent)
     for(int i = 0; i < ui->tab_emp->model()->columnCount(); i++) {
         ui->tab_emp->setColumnWidth(i, 100);
     }
+
+    // Connecter la combobox de tri
+    connect(ui->comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged),
+            this, &MainWindow::on_comboBox_currentIndexChanged);
 }
 
 MainWindow::~MainWindow()
@@ -358,16 +362,28 @@ void MainWindow::on_supprimer_clicked()
     }
 }
 
-void MainWindow::on_pushButton_3_clicked()
+// NOUVELLE FONCTION POUR LE TRI VIA COMBOBOX
+void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
-    qDebug() << "Tri par nom activé";
-    QSqlQueryModel* model = E.trierParNom();
+    QSqlQueryModel* model = nullptr;
+
+    switch(index) {
+    case 0: // "trie par salaire"
+        model = E.trierParSalaire(true); // Croissant
+        QMessageBox::information(this, "Tri", "Liste triée par salaire (croissant)");
+        break;
+    case 1: // "trie par nom"
+        model = E.trierParNom();
+        QMessageBox::information(this, "Tri", "Liste triée par nom (A-Z)");
+        break;
+    default:
+        model = E.afficher();
+        break;
+    }
+
     if (model) {
         ui->tab_emp->setModel(model);
         ui->tab_emp->resizeColumnsToContents();
-        QMessageBox::information(this, "Tri", "Liste triée par nom (A-Z)");
-    } else {
-        QMessageBox::critical(this, "Erreur", "Erreur lors du tri!");
     }
 }
 
@@ -421,9 +437,6 @@ void MainWindow::on_pushButton_7_clicked()
 
     QMessageBox::information(this, "Annulation", "Ajout annulé.");
 }
-// ============================================
-// PARTIE 2 - À AJOUTER À LA FIN DE mainwindow.cpp
-// ============================================
 
 // GENERATION PDF LISTE EMPLOYÉS
 void MainWindow::genererPDF(const QString &fileName)

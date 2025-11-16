@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -30,7 +31,6 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *pushButton_3;
     QTabWidget *tabWidget;
     QWidget *tab;
     QLabel *label;
@@ -81,6 +81,8 @@ public:
     QTableView *tab_emp;
     QFrame *frame;
     QPushButton *refresh_2;
+    QComboBox *comboBox;
+    QLabel *label_13;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -176,9 +178,6 @@ public:
 ""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        pushButton_3 = new QPushButton(centralwidget);
-        pushButton_3->setObjectName("pushButton_3");
-        pushButton_3->setGeometry(QRect(1260, 130, 101, 51));
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
         tabWidget->setGeometry(QRect(270, 30, 311, 461));
@@ -331,6 +330,14 @@ public:
         refresh_2 = new QPushButton(centralwidget);
         refresh_2->setObjectName("refresh_2");
         refresh_2->setGeometry(QRect(690, 30, 151, 29));
+        comboBox = new QComboBox(centralwidget);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName("comboBox");
+        comboBox->setGeometry(QRect(1320, 120, 91, 31));
+        label_13 = new QLabel(centralwidget);
+        label_13->setObjectName("label_13");
+        label_13->setGeometry(QRect(1260, 130, 61, 20));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -342,7 +349,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -351,7 +358,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "Trie Par Nom", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "CIN", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "Nom", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Pr\303\251nom", nullptr));
@@ -382,6 +388,10 @@ public:
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "PDF", nullptr));
         supprimer->setText(QCoreApplication::translate("MainWindow", "Supprimer", nullptr));
         refresh_2->setText(QCoreApplication::translate("MainWindow", "Recherche Par Cin", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("MainWindow", "trie par salaire", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("MainWindow", "trie par nom", nullptr));
+
+        label_13->setText(QCoreApplication::translate("MainWindow", "Trie", nullptr));
     } // retranslateUi
 
 };

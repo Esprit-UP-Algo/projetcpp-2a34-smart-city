@@ -46,7 +46,7 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "index",
     "on_modifier_clicked",
     "on_supprimer_clicked",
-    "on_pushButton_3_clicked",
+    "on_comboBox_currentIndexChanged",
     "on_pushButton_5_clicked",
     "on_pushButton_6_clicked",
     "on_pushButton_7_clicked"
@@ -77,10 +77,10 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
        6,    1,   84,    2, 0x08,    5 /* Private */,
        9,    0,   87,    2, 0x08,    7 /* Private */,
       10,    0,   88,    2, 0x08,    8 /* Private */,
-      11,    0,   89,    2, 0x08,    9 /* Private */,
-      12,    0,   90,    2, 0x08,   10 /* Private */,
-      13,    0,   91,    2, 0x08,   11 /* Private */,
-      14,    0,   92,    2, 0x08,   12 /* Private */,
+      11,    1,   89,    2, 0x08,    9 /* Private */,
+      12,    0,   92,    2, 0x08,   11 /* Private */,
+      13,    0,   93,    2, 0x08,   12 /* Private */,
+      14,    0,   94,    2, 0x08,   13 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -90,7 +90,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
     QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -122,8 +122,9 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_supprimer_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_pushButton_3_clicked'
+        // method 'on_comboBox_currentIndexChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
         // method 'on_pushButton_5_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_pushButton_6_clicked'
@@ -147,7 +148,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->on_tab_emp_clicked((*reinterpret_cast< std::add_pointer_t<QModelIndex>>(_a[1]))); break;
         case 5: _t->on_modifier_clicked(); break;
         case 6: _t->on_supprimer_clicked(); break;
-        case 7: _t->on_pushButton_3_clicked(); break;
+        case 7: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 8: _t->on_pushButton_5_clicked(); break;
         case 9: _t->on_pushButton_6_clicked(); break;
         case 10: _t->on_pushButton_7_clicked(); break;
