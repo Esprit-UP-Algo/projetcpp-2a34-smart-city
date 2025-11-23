@@ -450,8 +450,8 @@ QListView::item:hover {
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>420</y>
+      <x>490</x>
+      <y>430</y>
       <width>301</width>
       <height>141</height>
      </rect>
@@ -462,81 +462,6 @@ QListView::item:hover {
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
     </property>
-    <widget class="QTableWidget" name="tableWidget_4">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>10</y>
-       <width>281</width>
-       <height>121</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QTableWidget {
-    background-color: #ffffff;   /* fond blanc des cellules */
-    border: 2px solid #3399ff;   /* bordure bleue */
-    border-radius: 6px;
-    gridline-color: #e6f7f5;     /* lignes de séparation discrètes */
-    selection-background-color: #4CAF50; /* fond vert quand sélectionné */
-    selection-color: white;      /* texte blanc quand sélectionné */
-    font-size: 13px;
-    color: #003366; /* texte bleu foncé */
-}
-
-QHeaderView::section {
-    background-color: #4CAF50; /* vert pour l'entête */
-    color: white;
-    padding: 6px;
-    border: 1px solid #3399ff; /* contour bleu */
-    font-weight: bold;
-}
-
-QTableWidget::item:hover {
-    background-color: #cceeff;  /* bleu clair au survol */
-    color: #004d66;
-}</string>
-     </property>
-     <row>
-      <property name="text">
-       <string/>
-      </property>
-     </row>
-     <row>
-      <property name="text">
-       <string/>
-      </property>
-     </row>
-     <column>
-      <property name="text">
-       <string>Parking</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Occupation</string>
-      </property>
-     </column>
-     <item row="0" column="0">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="0" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="1" column="0">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-     <item row="1" column="1">
-      <property name="text">
-       <string/>
-      </property>
-     </item>
-    </widget>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
@@ -597,6 +522,19 @@ QTableWidget::item:hover {
      <string>Id</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_13">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>480</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>MAP</string>
+    </property>
+   </widget>
    <zorder>tableWidget</zorder>
    <zorder>ajouter_bt</zorder>
    <zorder>modifier_bt_2</zorder>
@@ -628,6 +566,7 @@ QTableWidget::item:hover {
    <zorder>nom_parking</zorder>
    <zorder>id_parking</zorder>
    <zorder>label_5</zorder>
+   <zorder>pushButton_13</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

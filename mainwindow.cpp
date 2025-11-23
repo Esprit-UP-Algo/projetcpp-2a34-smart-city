@@ -8,6 +8,13 @@
 #include <QDebug>
 #include <QPushButton>
 #include <QWidget>
+#include <QPrinter>
+#include <QTextDocument>
+#include <QFileDialog>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QDate>
+#include <QPageLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -58,6 +65,14 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "✅ Bouton ajouter_bt_2 (rechercher) connecté";
     } else {
         qDebug() << "❌ ajouter_bt_2 n'existe pas";
+    }
+
+    if (ui->pdf_bt) {
+        connect(ui->pdf_bt, &QPushButton::clicked,
+                this, &MainWindow::on_pdf_bt_clicked);
+        qDebug() << "✅ Bouton pdf_bt connecté";
+    } else {
+        qDebug() << "❌ pdf_bt n'existe pas";
     }
 
     qDebug() << "Vérification des widgets...";
@@ -420,7 +435,6 @@ void MainWindow::rechercherParLocalisation(QString localisation)
     if (row == 0) {
         QMessageBox::information(this, "Recherche",
                                  QString("Aucun parking trouvé pour la localisation : %1").arg(localisation));
-        // Recharger tous les parkings si aucun résultat
         loadParkingTable();
     } else {
         QMessageBox::information(this, "Recherche effectuée",
@@ -428,6 +442,178 @@ void MainWindow::rechercherParLocalisation(QString localisation)
     }
 
     qDebug() << "✅ Recherche terminée:" << row << "résultat(s)";
+}
+
+// =========================
+// 🔹 Bouton PDF - GRILLE VISUELLE
+// =========================
+void MainWindow::on_pdf_bt_clicked()
+{
+    qDebug() << "📄 BOUTON PDF CLIQUÉ";
+
+    Connection& c = Connection::createInstance();
+    QSqlDatabase db = c.getDatabase();
+
+    if (!db.isOpen() && !c.createConnect()) {
+        QMessageBox::critical(this, "Erreur", "Connexion à la base échouée !");
+        return;
+    }
+
+    QSqlQuery query(db);
+    if (!query.exec("SELECT ID_PARKING, NOM, CAPACITE, PLACESLIBRES FROM NOUR.PARKING ORDER BY ID_PARKING")) {
+        QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
+        return;
+    }
+
+    // Collecter les données des parkings
+    QList<QStringList> parkingsData;
+    int nbParkings = 0;
+
+    while (query.next()) {
+        QString id = query.value(0).toString();
+        QString nom = query.value(1).toString();
+        int capacite = query.value(2).toInt();
+        int placesLibres = query.value(3).toInt();
+
+        int placesOccupees = capacite - placesLibres;
+        double tauxOccupation = capacite > 0 ? (placesOccupees * 100.0 / capacite) : 0.0;
+
+        QStringList parkingInfo;
+        parkingInfo << id << nom
+                    << QString::number(capacite)
+                    << QString::number(placesOccupees)
+                    << QString::number(placesLibres)
+                    << QString::number(tauxOccupation, 'f', 2);
+
+        parkingsData.append(parkingInfo);
+        nbParkings++;
+    }
+
+    if (nbParkings == 0) {
+        QMessageBox::information(this, "Information", "Aucun parking à afficher.");
+        return;
+    }
+
+    // Construire le contenu HTML avec visualisation graphique
+    QString htmlContent = QString(
+        "<!DOCTYPE html>"
+        "<html>"
+        "<head>"
+        "<meta charset='UTF-8'>"
+        "<style>"
+        "body { font-family: Arial, sans-serif; margin: 40px; color: #333; }"
+        "h1 { color: #2c5f2d; text-align: center; margin-bottom: 50px; font-size: 32px; }"
+        "h1 .icon { display: inline-block; width: 40px; height: 40px; background: #2c5f2d; "
+        "            border-radius: 5px; margin-right: 15px; vertical-align: middle; "
+        "            position: relative; }"
+        "h1 .icon::before { content: ''; position: absolute; width: 8px; height: 25px; "
+        "                   background: white; left: 10px; top: 7px; border-radius: 2px; }"
+        "h1 .icon::after { content: ''; position: absolute; width: 8px; height: 15px; "
+        "                  background: white; left: 22px; top: 17px; border-radius: 2px; }"
+        ".grid-container { display: grid; grid-template-columns: repeat(6, 1fr); "
+        "                  gap: 10px; margin: 40px auto; max-width: 800px; }"
+        ".parking-cell { aspect-ratio: 1; border: 2px solid #ddd; border-radius: 8px; "
+        "                display: flex; flex-direction: column; align-items: center; "
+        "                justify-content: center; font-size: 11px; font-weight: bold; "
+        "                color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }"
+        ".parking-cell .id { font-size: 13px; margin-bottom: 3px; }"
+        ".parking-cell .nom { font-size: 10px; opacity: 0.9; }"
+        ".parking-cell .taux { font-size: 16px; margin-top: 5px; }"
+        ".vert { background-color: #4a8b4d; border-color: #3a7a3d; }"
+        ".orange { background-color: #ff9800; border-color: #e68900; }"
+        ".rouge { background-color: #f44336; border-color: #d32f2f; }"
+        ".legende { margin: 50px auto; max-width: 800px; background: #f5f5f5; "
+        "           padding: 25px; border-radius: 10px; }"
+        ".legende h2 { color: #2c5f2d; margin-top: 0; font-size: 20px; }"
+        ".legende-item { display: flex; align-items: center; margin: 12px 0; font-size: 14px; }"
+        ".legende-color { width: 30px; height: 30px; border-radius: 5px; "
+        "                 margin-right: 15px; border: 2px solid #ddd; }"
+        "</style>"
+        "</head>"
+        "<body>"
+        "<h1><span class='icon'></span>Taux d'Occupation des Parkings</h1>"
+        "<div class='grid-container'>"
+        );
+
+    // Générer les cellules pour chaque parking
+    for (const QStringList& parking : parkingsData) {
+        double taux = parking[5].toDouble();
+        QString cssClass;
+
+        // Déterminer la couleur selon le taux
+        if (taux < 50) {
+            cssClass = "vert";
+        } else if (taux < 80) {
+            cssClass = "orange";
+        } else {
+            cssClass = "rouge";
+        }
+
+        htmlContent += QString(
+                           "<div class='parking-cell %1'>"
+                           "<div class='id'>%2</div>"
+                           "<div class='nom'>%3</div>"
+                           "<div class='taux'>%4%%</div>"
+                           "</div>"
+                           ).arg(cssClass)
+                           .arg(parking[0])  // ID
+                           .arg(parking[1])  // Nom
+                           .arg(QString::number(taux, 'f', 1));
+    }
+
+    // Ajouter des cellules vides si nécessaire pour compléter la grille
+    int cellulesToAdd = (6 - (nbParkings % 6)) % 6;
+    for (int i = 0; i < cellulesToAdd; i++) {
+        htmlContent += "<div style='border: none;'></div>";
+    }
+
+    htmlContent += QString(
+        "</div>"
+
+        "<div class='legende'>"
+        "<h2>Légende:</h2>"
+        "<div class='legende-item'>"
+        "<div class='legende-color vert'></div>"
+        "<span><strong>Vert:</strong> Taux d'occupation < 50%% (Disponible)</span>"
+        "</div>"
+        "<div class='legende-item'>"
+        "<div class='legende-color orange'></div>"
+        "<span><strong>Orange:</strong> Taux d'occupation 50-80%% (Modéré)</span>"
+        "</div>"
+        "<div class='legende-item'>"
+        "<div class='legende-color rouge'></div>"
+        "<span><strong>Rouge:</strong> Taux d'occupation > 80%% (Saturé)</span>"
+        "</div>"
+        "</div>"
+        "</body>"
+        "</html>"
+        );
+
+    // Sauvegarder le PDF
+    QString fileName = QFileDialog::getSaveFileName(this,
+                                                    "Enregistrer le rapport PDF",
+                                                    QString("Taux_Occupation_Parkings_%1.pdf").arg(QDate::currentDate().toString("yyyy-MM-dd")),
+                                                    "PDF Files (*.pdf)");
+
+    if (fileName.isEmpty()) {
+        return;
+    }
+
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(fileName);
+    printer.setPageMargins(QMarginsF(15, 15, 15, 15), QPageLayout::Millimeter);
+
+    QTextDocument document;
+    document.setHtml(htmlContent);
+    document.print(&printer);
+
+    QMessageBox::information(this, "Succès",
+                             QString("PDF généré avec succès !\n\n%1 parkings inclus").arg(nbParkings));
+
+    QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
+
+    qDebug() << "✅ PDF généré:" << fileName;
 }
 
 // =========================
