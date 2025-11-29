@@ -1,0 +1,21 @@
+# ninja log v6
+18	825	7856867839825632	integration_crudd_autogen/timestamp	2caab40b22617978
+18	825	7856867839825632	integration_crudd_autogen/mocs_compilation.cpp	2caab40b22617978
+18	825	7856867839825632	C:/Users/issa diakate/Downloads/smartcity/smartcity/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/integration_crudd_autogen/timestamp	2caab40b22617978
+18	825	7856867839825632	C:/Users/issa diakate/Downloads/smartcity/smartcity/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/integration_crudd_autogen/mocs_compilation.cpp	2caab40b22617978
+850	5869	7856867841149255	CMakeFiles/integration_crudd.dir/connection.cpp.obj	f76cb0da470d936c
+862	6835	7856867841257817	CMakeFiles/integration_crudd.dir/equipement.cpp.obj	51ba3e38fe075b52
+856	7558	7856867841215427	CMakeFiles/integration_crudd.dir/employee.cpp.obj	8f3fb55d6dcbdebe
+840	7717	7856867841006383	CMakeFiles/integration_crudd.dir/main.cpp.obj	420efc0f1d85ddf4
+835	7973	7856867841006383	CMakeFiles/integration_crudd.dir/integration_crudd_autogen/mocs_compilation.cpp.obj	b826599e0beb417a
+867	9190	7856867841313059	CMakeFiles/integration_crudd.dir/dechet.cpp.obj	5775588b9ab94d07
+845	12117	7856867841077000	CMakeFiles/integration_crudd.dir/mainwindow.cpp.obj	c53ba46d4c4e884a
+40	697	7856869259295313	integration_crudd_autogen/timestamp	2caab40b22617978
+40	697	7856869259295313	integration_crudd_autogen/mocs_compilation.cpp	2caab40b22617978
+40	697	7856869259295313	C:/Users/issa diakate/Downloads/smartcity/smartcity/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/integration_crudd_autogen/timestamp	2caab40b22617978
+40	697	7856869259295313	C:/Users/issa diakate/Downloads/smartcity/smartcity/build/Desktop_Qt_6_10_1_MinGW_64_bit-Debug/integration_crudd_autogen/mocs_compilation.cpp	2caab40b22617978
+698	4093	7856869260215879	CMakeFiles/integration_crudd.dir/integration_crudd_autogen/mocs_compilation.cpp.obj	b826599e0beb417a
+701	4239	7856869260256007	CMakeFiles/integration_crudd.dir/main.cpp.obj	420efc0f1d85ddf4
+709	5451	7856869260337568	CMakeFiles/integration_crudd.dir/dechet.cpp.obj	5775588b9ab94d07
+705	7881	7856869260295971	CMakeFiles/integration_crudd.dir/mainwindow.cpp.obj	c53ba46d4c4e884a
+7881	10339	7856869332048366	integration_crudd.exe	677462b3db4d22f2

@@ -1,0 +1,17 @@
+# ninja log v6
+74	384	7861293169267179	integration_crudd_autogen/timestamp	66fc3c5a6be88a70
+48	1067	7861270809116896	build.ninja	96439f8da27567de
+74	384	7861293169267179	integration_crudd_autogen/mocs_compilation.cpp	66fc3c5a6be88a70
+823	2651	7861270132758599	CMakeFiles/integration_crudd.dir/main.cpp.obj	19b47971490a354d
+74	384	7861293169267179	C:/Users/anisk/OneDrive/Desktop/smartcity/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/integration_crudd_autogen/timestamp	66fc3c5a6be88a70
+844	3479	7861270132963529	CMakeFiles/integration_crudd.dir/dechet.cpp.obj	7bc5fe7cefe03f52
+832	2065	7861270132838560	CMakeFiles/integration_crudd.dir/connection.cpp.obj	78b2890bdca0f7b1
+840	2268	7861270132918610	CMakeFiles/integration_crudd.dir/equipement.cpp.obj	9dcfa13d0261fcad
+74	384	7861293169267179	C:/Users/anisk/OneDrive/Desktop/smartcity/build/Desktop_Qt_6_7_3_MinGW_64_bit-Debug/integration_crudd_autogen/mocs_compilation.cpp	66fc3c5a6be88a70
+820	2709	7861270132729555	CMakeFiles/integration_crudd.dir/integration_crudd_autogen/mocs_compilation.cpp.obj	a83574aa8eb5ddc3
+836	2461	7861270132888571	CMakeFiles/integration_crudd.dir/employee.cpp.obj	523f4de6c4cbf290
+50	65	7860632380183987	clean	577b940aee94fbd7
+384	4286	7861293172365104	CMakeFiles/integration_crudd.dir/mainwindow.cpp.obj	61d6fcc553a2e6e
+4286	6477	7861293211382647	integration_crudd.exe	44def9eb926a80e2
+38	63	7861270061030176	CMakeFiles/clean.additional	baedbe210acaa455
+177	1754	7861273948482506	CMakeFiles/integration_crudd.dir/notificationmanager.cpp.obj	c15cd41ac4209a43
