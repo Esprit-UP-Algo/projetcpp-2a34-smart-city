@@ -450,8 +450,8 @@ QListView::item:hover {
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>430</y>
+      <x>570</x>
+      <y>440</y>
       <width>301</width>
       <height>141</height>
      </rect>
@@ -461,19 +461,6 @@ QListView::item:hover {
     </property>
     <property name="frameShadow">
      <enum>QFrame::Shadow::Raised</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>440</y>
-      <width>101</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Statistiques</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="tarif_parking">
@@ -522,7 +509,7 @@ QListView::item:hover {
      <string>Id</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_13">
+   <widget class="QPushButton" name="map_bt">
     <property name="geometry">
      <rect>
       <x>90</x>
@@ -533,6 +520,19 @@ QListView::item:hover {
     </property>
     <property name="text">
      <string>MAP</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="statistiques_bt">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>480</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>statistiques</string>
     </property>
    </widget>
    <zorder>tableWidget</zorder>
@@ -550,7 +550,6 @@ QListView::item:hover {
    <zorder>pdf_bt</zorder>
    <zorder>label_51</zorder>
    <zorder>frame_2</zorder>
-   <zorder>label_3</zorder>
    <zorder>label</zorder>
    <zorder>label_26</zorder>
    <zorder>place_parking</zorder>
@@ -566,7 +565,8 @@ QListView::item:hover {
    <zorder>nom_parking</zorder>
    <zorder>id_parking</zorder>
    <zorder>label_5</zorder>
-   <zorder>pushButton_13</zorder>
+   <zorder>map_bt</zorder>
+   <zorder>statistiques_bt</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

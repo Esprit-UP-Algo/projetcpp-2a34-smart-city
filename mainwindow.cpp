@@ -15,6 +15,17 @@
 #include <QUrl>
 #include <QDate>
 #include <QPageLayout>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsTextItem>
+#include <QLabel>
+#include <QDir>  // Ajouter cette ligne avec les autres #include au début du fichier
+#include <QInputDialog>  // Pour la sélection du parking
+#include <QTime>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -76,34 +87,25 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     qDebug() << "Vérification des widgets...";
-
-    if (ui->tableWidget_2) {
-        qDebug() << "✅ Initialisation de tableWidget_2...";
-        ui->tableWidget_2->setColumnCount(8);
-
-        QStringList headers = {"ID", "Nom", "Localisation", "Capacité",
-                               "Places libres", "Statut", "Type", "Tarification"};
-        ui->tableWidget_2->setHorizontalHeaderLabels(headers);
-
-        ui->tableWidget_2->horizontalHeader()->setStretchLastSection(true);
-        ui->tableWidget_2->setAlternatingRowColors(true);
-        ui->tableWidget_2->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui->tableWidget_2->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        qDebug() << "✅ tableWidget_2 initialisé avec succès";
+    if (ui->map_bt) {
+        connect(ui->map_bt, &QPushButton::clicked,
+                this, &MainWindow::on_map_bt_clicked);
+        qDebug() << "Bouton MAP connecté";
     } else {
-        qDebug() << "❌ ERREUR: tableWidget_2 n'existe pas!";
+        qDebug() << "ERREUR: map_bt n'existe pas dans l'interface !";
+    }
+    if (ui->statistiques_bt) {
+        connect(ui->statistiques_bt, &QPushButton::clicked,
+                this, &MainWindow::on_statistiques_bt_clicked);
+        qDebug() << "✅ Bouton statistiques_bt connecté";
     }
 
-    qDebug() << "Tentative de chargement du tableau...";
-    loadParkingTable();
-    qDebug() << "=== FIN DEMARRAGE ===";
-}
+}   // ← ACCOLADE AJOUTÉE ICI : FIN DU CONSTRUCTEUR !!!
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 // =========================
 // 🔹 Bouton Ajouter
 // =========================
@@ -449,7 +451,7 @@ void MainWindow::rechercherParLocalisation(QString localisation)
 // =========================
 void MainWindow::on_pdf_bt_clicked()
 {
-    qDebug() << "📄 BOUTON PDF CLIQUÉ";
+    qDebug() << "📄 BOUTON PDF CLIQUÉ - Génération ticket";
 
     Connection& c = Connection::createInstance();
     QSqlDatabase db = c.getDatabase();
@@ -459,140 +461,185 @@ void MainWindow::on_pdf_bt_clicked()
         return;
     }
 
+    // Demander à l'utilisateur de sélectionner un parking
     QSqlQuery query(db);
-    if (!query.exec("SELECT ID_PARKING, NOM, CAPACITE, PLACESLIBRES FROM NOUR.PARKING ORDER BY ID_PARKING")) {
+    if (!query.exec("SELECT ID_PARKING, NOM, LOCALISATION, TARIFICATION FROM NOUR.PARKING ORDER BY NOM")) {
         QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
         return;
     }
 
-    // Collecter les données des parkings
-    QList<QStringList> parkingsData;
-    int nbParkings = 0;
+    // Créer une liste de parkings pour la sélection
+    QStringList parkingList;
+    QMap<QString, QStringList> parkingData;
 
     while (query.next()) {
         QString id = query.value(0).toString();
         QString nom = query.value(1).toString();
-        int capacite = query.value(2).toInt();
-        int placesLibres = query.value(3).toInt();
+        QString localisation = query.value(2).toString();
+        QString tarif = query.value(3).toString();
 
-        int placesOccupees = capacite - placesLibres;
-        double tauxOccupation = capacite > 0 ? (placesOccupees * 100.0 / capacite) : 0.0;
+        QString displayText = QString("%1 - %2 (%3)").arg(id, nom, localisation);
+        parkingList << displayText;
 
-        QStringList parkingInfo;
-        parkingInfo << id << nom
-                    << QString::number(capacite)
-                    << QString::number(placesOccupees)
-                    << QString::number(placesLibres)
-                    << QString::number(tauxOccupation, 'f', 2);
-
-        parkingsData.append(parkingInfo);
-        nbParkings++;
+        QStringList data;
+        data << id << nom << localisation << tarif;
+        parkingData[displayText] = data;
     }
 
-    if (nbParkings == 0) {
-        QMessageBox::information(this, "Information", "Aucun parking à afficher.");
+    if (parkingList.isEmpty()) {
+        QMessageBox::information(this, "Information", "Aucun parking disponible.");
         return;
     }
 
-    // Construire le contenu HTML avec visualisation graphique
+    // Dialogue de sélection
+    bool ok;
+    QString selectedParking = QInputDialog::getItem(this, "Sélectionner un Parking",
+                                                    "Choisissez un parking pour générer le ticket:",
+                                                    parkingList, 0, false, &ok);
+
+    if (!ok || selectedParking.isEmpty()) {
+        return;
+    }
+
+    // Récupérer les données du parking sélectionné
+    QStringList data = parkingData[selectedParking];
+    QString parkingId = data[0];
+    QString parkingNom = data[1];
+    QString parkingLoc = data[2];
+    QString parkingTarif = data[3];
+
+    // Générer le numéro de ticket unique
+    QString ticketNumber = QString("TK-%1-%2")
+                               .arg(QDate::currentDate().toString("yyyyMMdd"))
+                               .arg(QRandomGenerator::global()->bounded(1000, 9999));
+
+    // Date et heure actuelles
+    QString dateEntree = QDate::currentDate().toString("dd/MM/yyyy");
+    QString heureEntree = QTime::currentTime().toString("HH:mm");
+
+    // Construire le HTML du ticket
     QString htmlContent = QString(
-        "<!DOCTYPE html>"
-        "<html>"
-        "<head>"
-        "<meta charset='UTF-8'>"
-        "<style>"
-        "body { font-family: Arial, sans-serif; margin: 40px; color: #333; }"
-        "h1 { color: #2c5f2d; text-align: center; margin-bottom: 50px; font-size: 32px; }"
-        "h1 .icon { display: inline-block; width: 40px; height: 40px; background: #2c5f2d; "
-        "            border-radius: 5px; margin-right: 15px; vertical-align: middle; "
-        "            position: relative; }"
-        "h1 .icon::before { content: ''; position: absolute; width: 8px; height: 25px; "
-        "                   background: white; left: 10px; top: 7px; border-radius: 2px; }"
-        "h1 .icon::after { content: ''; position: absolute; width: 8px; height: 15px; "
-        "                  background: white; left: 22px; top: 17px; border-radius: 2px; }"
-        ".grid-container { display: grid; grid-template-columns: repeat(6, 1fr); "
-        "                  gap: 10px; margin: 40px auto; max-width: 800px; }"
-        ".parking-cell { aspect-ratio: 1; border: 2px solid #ddd; border-radius: 8px; "
-        "                display: flex; flex-direction: column; align-items: center; "
-        "                justify-content: center; font-size: 11px; font-weight: bold; "
-        "                color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.3); }"
-        ".parking-cell .id { font-size: 13px; margin-bottom: 3px; }"
-        ".parking-cell .nom { font-size: 10px; opacity: 0.9; }"
-        ".parking-cell .taux { font-size: 16px; margin-top: 5px; }"
-        ".vert { background-color: #4a8b4d; border-color: #3a7a3d; }"
-        ".orange { background-color: #ff9800; border-color: #e68900; }"
-        ".rouge { background-color: #f44336; border-color: #d32f2f; }"
-        ".legende { margin: 50px auto; max-width: 800px; background: #f5f5f5; "
-        "           padding: 25px; border-radius: 10px; }"
-        ".legende h2 { color: #2c5f2d; margin-top: 0; font-size: 20px; }"
-        ".legende-item { display: flex; align-items: center; margin: 12px 0; font-size: 14px; }"
-        ".legende-color { width: 30px; height: 30px; border-radius: 5px; "
-        "                 margin-right: 15px; border: 2px solid #ddd; }"
-        "</style>"
-        "</head>"
-        "<body>"
-        "<h1><span class='icon'></span>Taux d'Occupation des Parkings</h1>"
-        "<div class='grid-container'>"
-        );
+                              "<!DOCTYPE html>"
+                              "<html>"
+                              "<head>"
+                              "<meta charset='UTF-8'>"
+                              "<style>"
+                              "body { font-family: 'Courier New', monospace; margin: 0; padding: 20px; }"
+                              ".ticket { width: 300px; margin: 0 auto; border: 3px dashed #333; "
+                              "          padding: 20px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }"
+                              ".header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 15px; margin-bottom: 15px; }"
+                              ".header h1 { margin: 0; font-size: 24px; color: #2c5f2d; }"
+                              ".header h2 { margin: 5px 0 0 0; font-size: 14px; color: #666; }"
+                              ".ticket-number { text-align: center; font-size: 18px; font-weight: bold; "
+                              "                 background: #f0f0f0; padding: 10px; margin: 15px 0; "
+                              "                 border: 2px solid #333; }"
+                              ".info-section { margin: 15px 0; }"
+                              ".info-row { display: flex; justify-content: space-between; margin: 8px 0; "
+                              "            font-size: 14px; }"
+                              ".info-label { font-weight: bold; }"
+                              ".info-value { text-align: right; }"
+                              ".separator { border-top: 1px dashed #999; margin: 15px 0; }"
+                              ".tarif-section { background: #fff9e6; padding: 15px; border: 2px solid #ffcc00; "
+                              "                 border-radius: 5px; margin: 15px 0; }"
+                              ".tarif-title { font-weight: bold; text-align: center; margin-bottom: 10px; "
+                              "               font-size: 16px; color: #cc8800; }"
+                              ".tarif-info { font-size: 20px; text-align: center; font-weight: bold; color: #cc8800; }"
+                              ".fill-section { margin: 20px 0; padding: 15px; background: #f9f9f9; border: 2px solid #ddd; }"
+                              ".fill-title { font-weight: bold; margin-bottom: 10px; text-align: center; }"
+                              ".fill-line { margin: 15px 0; border-bottom: 1px solid #333; padding-bottom: 5px; }"
+                              ".fill-label { font-size: 12px; color: #666; }"
+                              ".footer { text-align: center; font-size: 11px; color: #666; "
+                              "          margin-top: 20px; border-top: 2px solid #333; padding-top: 10px; }"
+                              ".barcode { text-align: center; font-family: 'Libre Barcode 39', monospace; "
+                              "           font-size: 40px; letter-spacing: 2px; margin: 10px 0; }"
+                              "</style>"
+                              "</head>"
+                              "<body>"
+                              "<div class='ticket'>"
 
-    // Générer les cellules pour chaque parking
-    for (const QStringList& parking : parkingsData) {
-        double taux = parking[5].toDouble();
-        QString cssClass;
+                              "<!-- En-tête -->"
+                              "<div class='header'>"
+                              "<h1>🅿️ PARKING</h1>"
+                              "<h2>%1</h2>"
+                              "<h2>%2</h2>"
+                              "</div>"
 
-        // Déterminer la couleur selon le taux
-        if (taux < 50) {
-            cssClass = "vert";
-        } else if (taux < 80) {
-            cssClass = "orange";
-        } else {
-            cssClass = "rouge";
-        }
+                              "<!-- Numéro de ticket -->"
+                              "<div class='ticket-number'>TICKET N° %3</div>"
 
-        htmlContent += QString(
-                           "<div class='parking-cell %1'>"
-                           "<div class='id'>%2</div>"
-                           "<div class='nom'>%3</div>"
-                           "<div class='taux'>%4%%</div>"
-                           "</div>"
-                           ).arg(cssClass)
-                           .arg(parking[0])  // ID
-                           .arg(parking[1])  // Nom
-                           .arg(QString::number(taux, 'f', 1));
-    }
+                              "<!-- Code-barres stylisé -->"
+                              "<div class='barcode'>*%3*</div>"
 
-    // Ajouter des cellules vides si nécessaire pour compléter la grille
-    int cellulesToAdd = (6 - (nbParkings % 6)) % 6;
-    for (int i = 0; i < cellulesToAdd; i++) {
-        htmlContent += "<div style='border: none;'></div>";
-    }
+                              "<!-- Informations d'entrée -->"
+                              "<div class='info-section'>"
+                              "<div class='info-row'>"
+                              "<span class='info-label'>DATE D'ENTRÉE:</span>"
+                              "<span class='info-value'>%4</span>"
+                              "</div>"
+                              "<div class='info-row'>"
+                              "<span class='info-label'>HEURE D'ENTRÉE:</span>"
+                              "<span class='info-value'>%5</span>"
+                              "</div>"
+                              "<div class='info-row'>"
+                              "<span class='info-label'>ID PARKING:</span>"
+                              "<span class='info-value'>%6</span>"
+                              "</div>"
+                              "</div>"
 
-    htmlContent += QString(
-        "</div>"
+                              "<div class='separator'></div>"
 
-        "<div class='legende'>"
-        "<h2>Légende:</h2>"
-        "<div class='legende-item'>"
-        "<div class='legende-color vert'></div>"
-        "<span><strong>Vert:</strong> Taux d'occupation < 50%% (Disponible)</span>"
-        "</div>"
-        "<div class='legende-item'>"
-        "<div class='legende-color orange'></div>"
-        "<span><strong>Orange:</strong> Taux d'occupation 50-80%% (Modéré)</span>"
-        "</div>"
-        "<div class='legende-item'>"
-        "<div class='legende-color rouge'></div>"
-        "<span><strong>Rouge:</strong> Taux d'occupation > 80%% (Saturé)</span>"
-        "</div>"
-        "</div>"
-        "</body>"
-        "</html>"
-        );
+                              "<!-- Tarification -->"
+                              "<div class='tarif-section'>"
+                              "<div class='tarif-title'>💳 TARIFICATION</div>"
+                              "<div class='tarif-info'>%7 DT / heure</div>"
+                              "</div>"
+
+                              "<div class='separator'></div>"
+
+                              "<!-- Section à remplir -->"
+                              "<div class='fill-section'>"
+                              "<div class='fill-title'>📝 À REMPLIR À LA SORTIE</div>"
+
+                              "<div class='fill-line'>"
+                              "<div class='fill-label'>HEURE DE SORTIE:</div>"
+                              "</div>"
+
+                              "<div class='fill-line'>"
+                              "<div class='fill-label'>DURÉE TOTALE:</div>"
+                              "</div>"
+
+                              "<div class='fill-line'>"
+                              "<div class='fill-label'>MONTANT À PAYER:</div>"
+                              "</div>"
+
+                              "<div class='fill-line'>"
+                              "<div class='fill-label'>SIGNATURE:</div>"
+                              "</div>"
+                              "</div>"
+
+                              "<!-- Pied de page -->"
+                              "<div class='footer'>"
+                              "Merci de votre visite<br>"
+                              "Conservez ce ticket<br>"
+                              "Support: parking@contact.tn"
+                              "</div>"
+
+                              "</div>"
+                              "</body>"
+                              "</html>"
+                              ).arg(parkingNom)           // %1 - Nom du parking
+                              .arg(parkingLoc)           // %2 - Localisation
+                              .arg(ticketNumber)         // %3 - Numéro de ticket (utilisé 2 fois)
+                              .arg(dateEntree)           // %4 - Date
+                              .arg(heureEntree)          // %5 - Heure
+                              .arg(parkingId)            // %6 - ID Parking
+                              .arg(parkingTarif);        // %7 - Tarif
 
     // Sauvegarder le PDF
+    QString defaultFileName = QString("Ticket_Parking_%1.pdf").arg(ticketNumber);
     QString fileName = QFileDialog::getSaveFileName(this,
-                                                    "Enregistrer le rapport PDF",
-                                                    QString("Taux_Occupation_Parkings_%1.pdf").arg(QDate::currentDate().toString("yyyy-MM-dd")),
+                                                    "Enregistrer le ticket PDF",
+                                                    defaultFileName,
                                                     "PDF Files (*.pdf)");
 
     if (fileName.isEmpty()) {
@@ -602,18 +649,20 @@ void MainWindow::on_pdf_bt_clicked()
     QPrinter printer(QPrinter::HighResolution);
     printer.setOutputFormat(QPrinter::PdfFormat);
     printer.setOutputFileName(fileName);
-    printer.setPageMargins(QMarginsF(15, 15, 15, 15), QPageLayout::Millimeter);
+    printer.setPageSize(QPageSize(QPageSize::A5));
+    printer.setPageMargins(QMarginsF(10, 10, 10, 10), QPageLayout::Millimeter);
 
     QTextDocument document;
     document.setHtml(htmlContent);
     document.print(&printer);
 
     QMessageBox::information(this, "Succès",
-                             QString("PDF généré avec succès !\n\n%1 parkings inclus").arg(nbParkings));
+                             QString("Ticket généré avec succès !\n\nTicket N°: %1\nParking: %2")
+                                 .arg(ticketNumber, parkingNom));
 
     QDesktopServices::openUrl(QUrl::fromLocalFile(fileName));
 
-    qDebug() << "✅ PDF généré:" << fileName;
+    qDebug() << "✅ Ticket PDF généré:" << fileName;
 }
 
 // =========================
@@ -647,4 +696,316 @@ void MainWindow::loadParkingTable()
 
     ui->tableWidget_2->resizeColumnsToContents();
     qDebug() << "✅ Tableau chargé:" << row << "lignes";
+}
+    void MainWindow::on_map_bt_clicked()
+{
+    qDebug() << "🗺️ BOUTON MAP CLIQUÉ";
+
+    Connection& c = Connection::createInstance();
+    QSqlDatabase db = c.getDatabase();
+
+    if (!db.isOpen() && !c.createConnect()) {
+        QMessageBox::critical(this, "Erreur", "Connexion à la base échouée !");
+        return;
+    }
+
+    QSqlQuery query(db);
+    if (!query.exec("SELECT ID_PARKING, NOM, LOCALISATION, CAPACITE, PLACESLIBRES FROM NOUR.PARKING ORDER BY ID_PARKING")) {
+        QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
+        return;
+    }
+
+    QDialog *mapDialog = new QDialog(this);
+    mapDialog->setWindowTitle("🗺️ Carte des Parkings");
+    mapDialog->resize(1200, 800);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(mapDialog);
+
+    QLabel *titleLabel = new QLabel("🗺️ Carte des Parkings - Occupation en temps réel");
+    titleLabel->setStyleSheet("font-size: 20px; font-weight: bold; color: #2c5f2d; padding: 10px;");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    mainLayout->addWidget(titleLabel);
+
+    QGraphicsScene *scene = new QGraphicsScene();
+    QGraphicsView *view = new QGraphicsView(scene);
+    view->setRenderHint(QPainter::Antialiasing);
+
+    // 🗺️ CHARGER L'IMAGE DE LA CARTE DE TUNISIE
+    // Mettez le chemin vers votre image de carte (à adapter selon votre projet)
+    QString mapImagePath = ":/images/tunisia_map.png"; // Si l'image est dans les ressources
+    // OU
+    // QString mapImagePath = QCoreApplication::applicationDirPath() + "/tunisia_map.png"; // Si dans le dossier exe
+
+    QPixmap mapPixmap(mapImagePath);
+
+    if (!mapPixmap.isNull()) {
+        // Si l'image est chargée avec succès
+        QGraphicsPixmapItem *mapBackground = scene->addPixmap(mapPixmap.scaled(1200, 700, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+        mapBackground->setPos(0, 0);
+        mapBackground->setZValue(0); // Mettre l'image en arrière-plan
+    } else {
+        // Si l'image n'est pas trouvée, utiliser un fond de secours
+        qDebug() << "⚠️ Image de carte non trouvée, utilisation du fond dégradé";
+        QLinearGradient gradient(0, 0, 0, 700);
+        gradient.setColorAt(0, QColor(220, 240, 255));
+        gradient.setColorAt(1, QColor(180, 220, 240));
+        view->setBackgroundBrush(QBrush(gradient));
+    }
+
+    // Positions approximatives basées sur les coordonnées GPS de la Tunisie
+    // Ajustez ces valeurs selon votre image de carte
+    QMap<QString, QPoint> positions;
+    positions["tunis"] = QPoint(600, 250);
+    positions["ariana"] = QPoint(650, 220);
+    positions["manar"] = QPoint(620, 240);
+    positions["manouba"] = QPoint(550, 250);
+    positions["ben arous"] = QPoint(610, 290);
+    positions["nabeul"] = QPoint(700, 260);
+    positions["sousse"] = QPoint(600, 380);
+    positions["sfax"] = QPoint(580, 500);
+    positions["kairouan"] = QPoint(550, 400);
+
+    int count = 0;
+
+    while (query.next()) {
+        QString id = query.value(0).toString();
+        QString nom = query.value(1).toString();
+        QString localisation = query.value(2).toString().toLower();
+        int capacite = query.value(3).toInt();
+        int placesLibres = query.value(4).toInt();
+
+        int placesOccupees = capacite - placesLibres;
+        double tauxOccupation = capacite > 0 ? (placesOccupees * 100.0 / capacite) : 0.0;
+
+        QColor couleur;
+        if (tauxOccupation >= 80) {
+            couleur = QColor(244, 67, 54); // Rouge
+        } else if (tauxOccupation >= 50) {
+            couleur = QColor(255, 152, 0); // Orange
+        } else {
+            couleur = QColor(76, 175, 80); // Vert
+        }
+
+        // Position sur la carte avec un petit décalage aléatoire
+        QPoint pos = positions.value(localisation, QPoint(600, 300 + (count * 80)));
+
+        int offsetX = (QRandomGenerator::global()->bounded(40)) - 20;
+        int offsetY = (QRandomGenerator::global()->bounded(40)) - 20;
+        int x = pos.x() + offsetX;
+        int y = pos.y() + offsetY;
+
+        // Dessiner le cercle du parking
+        QGraphicsEllipseItem *circle = scene->addEllipse(x - 40, y - 40, 80, 80);
+        circle->setBrush(QBrush(couleur));
+        circle->setPen(QPen(Qt::black, 3));
+        circle->setZValue(10); // Mettre les cercles au-dessus de la carte
+
+        // ID du parking
+        QGraphicsTextItem *idText = scene->addText(id);
+        idText->setPos(x - 25, y - 30);
+        idText->setDefaultTextColor(Qt::white);
+        QFont idFont = idText->font();
+        idFont.setPointSize(12);
+        idFont.setBold(true);
+        idText->setFont(idFont);
+        idText->setZValue(11);
+
+        // Nom du parking
+        QGraphicsTextItem *nomText = scene->addText(nom);
+        nomText->setPos(x - 35, y - 10);
+        nomText->setDefaultTextColor(Qt::white);
+        QFont nomFont = nomText->font();
+        nomFont.setPointSize(9);
+        nomFont.setBold(true);
+        nomText->setFont(nomFont);
+        nomText->setZValue(11);
+
+        // Taux d'occupation
+        QGraphicsTextItem *tauxText = scene->addText(QString::number(tauxOccupation, 'f', 0) + "%");
+        tauxText->setPos(x - 20, y + 10);
+        tauxText->setDefaultTextColor(Qt::white);
+        QFont tauxFont = tauxText->font();
+        tauxFont.setPointSize(14);
+        tauxFont.setBold(true);
+        tauxText->setFont(tauxFont);
+        tauxText->setZValue(11);
+
+        // Tooltip avec informations détaillées
+        QString tooltip = QString(
+                              "<b>%1 - %2</b><br>"
+                              "Localisation: %3<br>"
+                              "Capacité: %4 places<br>"
+                              "Occupées: %5<br>"
+                              "Libres: %6<br>"
+                              "Taux: %7%"
+                              ).arg(id).arg(nom).arg(localisation).arg(capacite)
+                              .arg(placesOccupees).arg(placesLibres)
+                              .arg(QString::number(tauxOccupation, 'f', 1));
+
+        circle->setToolTip(tooltip);
+        count++;
+    }
+
+    mainLayout->addWidget(view);
+
+    // Légende
+    QHBoxLayout *legendLayout = new QHBoxLayout();
+
+    QLabel *legendTitle = new QLabel("<b>Légende:</b>");
+    legendTitle->setStyleSheet("font-size: 14px; margin-right: 20px;");
+    legendLayout->addWidget(legendTitle);
+
+    // Vert
+    QLabel *greenCircle = new QLabel("●");
+    greenCircle->setStyleSheet("color: #4caf50; font-size: 30px;");
+    QLabel *greenLabel = new QLabel("Disponible (< 50%)");
+    greenLabel->setStyleSheet("font-size: 12px;");
+    legendLayout->addWidget(greenCircle);
+    legendLayout->addWidget(greenLabel);
+    legendLayout->addSpacing(20);
+
+    // Orange
+    QLabel *orangeCircle = new QLabel("●");
+    orangeCircle->setStyleSheet("color: #ff9800; font-size: 30px;");
+    QLabel *orangeLabel = new QLabel("Modéré (50-80%)");
+    orangeLabel->setStyleSheet("font-size: 12px;");
+    legendLayout->addWidget(orangeCircle);
+    legendLayout->addWidget(orangeLabel);
+    legendLayout->addSpacing(20);
+
+    // Rouge
+    QLabel *redCircle = new QLabel("●");
+    redCircle->setStyleSheet("color: #f44336; font-size: 30px;");
+    QLabel *redLabel = new QLabel("Saturé (> 80%)");
+    redLabel->setStyleSheet("font-size: 12px;");
+    legendLayout->addWidget(redCircle);
+    legendLayout->addWidget(redLabel);
+
+    legendLayout->addStretch();
+
+    QWidget *legendWidget = new QWidget();
+    legendWidget->setLayout(legendLayout);
+    legendWidget->setStyleSheet("background-color: #f5f5f5; padding: 10px; border-radius: 5px;");
+    mainLayout->addWidget(legendWidget);
+
+    mapDialog->exec();
+
+    qDebug() << "✅ Carte affichée avec" << count << "parkings";
+}
+void MainWindow::on_statistiques_bt_clicked()
+{
+    qDebug() << "📊 BOUTON STATISTIQUES CLIQUÉ";
+
+    Connection& c = Connection::createInstance();
+    QSqlDatabase db = c.getDatabase();
+
+    if (!db.isOpen() && !c.createConnect()) {
+        QMessageBox::critical(this, "Erreur", "Connexion à la base échouée !");
+        return;
+    }
+
+    // D'abord, voir TOUTES les valeurs de TYPE dans la base
+    QSqlQuery debugQuery(db);
+    debugQuery.exec("SELECT DISTINCT TYPE FROM NOUR.PARKING");
+    qDebug() << "=== Types trouvés dans la base ===";
+    while (debugQuery.next()) {
+        qDebug() << "Type:" << debugQuery.value(0).toString();
+    }
+
+    // Compter TOUS les parkings par type (sans filtre)
+    QSqlQuery query(db);
+    if (!query.exec("SELECT TYPE, COUNT(*) as nb FROM NOUR.PARKING GROUP BY TYPE")) {
+        QMessageBox::critical(this, "Erreur SQL", query.lastError().text());
+        return;
+    }
+
+    int nbPublic = 0;
+    int nbPrive = 0;
+
+    while (query.next()) {
+        QString type = query.value(0).toString().toLower().trimmed();
+        int count = query.value(1).toInt();
+
+        qDebug() << "Type trouvé:" << type << "- Nombre:" << count;
+
+        // Accepter plusieurs variantes
+        if (type == "public" || type == "publique") {
+            nbPublic = count;
+        } else if (type == "prive" || type == "privé" || type == "private") {
+            nbPrive = count;
+        }
+    }
+
+    qDebug() << "✅ Résultat final: Public=" << nbPublic << ", Privé=" << nbPrive;
+
+    // Créer la fenêtre
+    QDialog *statsDialog = new QDialog(this);
+    statsDialog->setWindowTitle("📊 Statistiques");
+    statsDialog->resize(600, 500);
+
+    QVBoxLayout *mainLayout = new QVBoxLayout(statsDialog);
+
+    // Titre
+    QLabel *titleLabel = new QLabel("📊 Nombre de Parkings");
+    titleLabel->setStyleSheet("font-size: 24px; font-weight: bold; color: #2c5f2d; padding: 20px;");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    mainLayout->addWidget(titleLabel);
+
+    // Scène graphique
+    QGraphicsScene *scene = new QGraphicsScene();
+    QGraphicsView *view = new QGraphicsView(scene);
+    view->setRenderHint(QPainter::Antialiasing);
+    view->setBackgroundBrush(QBrush(Qt::white));
+
+    int margin = 50;
+    int graphWidth = 500;
+    int graphHeight = 300;
+    int barWidth = 150;
+
+    // Axes
+    scene->addLine(margin, margin + graphHeight, margin + graphWidth, margin + graphHeight, QPen(Qt::black, 3));
+    scene->addLine(margin, margin, margin, margin + graphHeight, QPen(Qt::black, 3));
+
+    // Valeur max pour l'échelle
+    int maxValue = qMax(nbPublic, nbPrive);
+    if (maxValue == 0) maxValue = 10;
+
+    // Fonction pour dessiner une barre
+    auto drawBar = [&](int x, int value, QColor color, QString label) {
+        double ratio = (double)value / maxValue;
+        int barHeight = ratio * (graphHeight - 20);
+        int y = margin + graphHeight - barHeight;
+
+        // Barre
+        QGraphicsRectItem *bar = scene->addRect(x, y, barWidth, barHeight);
+        bar->setBrush(QBrush(color));
+        bar->setPen(QPen(Qt::black, 3));
+
+        // Valeur au-dessus
+        QGraphicsTextItem *valueText = scene->addText(QString::number(value));
+        QFont valueFont = valueText->font();
+        valueFont.setPointSize(20);
+        valueFont.setBold(true);
+        valueText->setFont(valueFont);
+        valueText->setDefaultTextColor(color.darker(150));
+        valueText->setPos(x + 55, y - 35);
+
+        // Label en bas
+        QGraphicsTextItem *labelText = scene->addText(label);
+        QFont labelFont = labelText->font();
+        labelFont.setPointSize(14);
+        labelFont.setBold(true);
+        labelText->setFont(labelFont);
+        labelText->setPos(x + 30, margin + graphHeight + 10);
+    };
+
+    // Dessiner les 2 barres
+    drawBar(margin + 50, nbPublic, QColor(76, 175, 80), "Public");
+    drawBar(margin + 280, nbPrive, QColor(33, 150, 243), "Privé");
+
+    mainLayout->addWidget(view);
+
+    statsDialog->exec();
+
+    qDebug() << "✅ Stats affichées: Public=" << nbPublic << ", Privé=" << nbPrive;
 }

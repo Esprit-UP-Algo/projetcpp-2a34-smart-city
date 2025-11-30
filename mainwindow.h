@@ -41,7 +41,8 @@ private slots:
 
     // Slot pour le bouton PDF
     void on_pdf_bt_clicked();
-
+    void on_map_bt_clicked();
+    void on_statistiques_bt_clicked();
 private:
     Ui::MainWindow *ui;
 
