@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\notificationmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\connection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\employee.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\equipement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\dechet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\alerte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\alertemap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\parking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\loginwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\passwordrecovery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\database_manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\facedialog_qt6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\faceenrolldialog_qt6.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\mxfaceapi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\emailservice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\serialreader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\EWIEGA46WW\qrc_resources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\notificationmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\connection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\employee.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\equipement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\dechet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\alerte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\alertemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\parking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\loginwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\passwordrecovery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\database_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\facedialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\faceenrolldialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\mxfaceapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\emailservice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\serialreader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_Debug\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_Debug\ui_loginwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_Release\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_Release\ui_loginwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_MinSizeRel\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_MinSizeRel\ui_loginwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_RelWithDebInfo\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\include_RelWithDebInfo\ui_loginwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\CMakeFiles\5728a75e6ab8b77847b5ef795fa5266f\autouic_(CONFIG).stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\CMakeFiles\0c22337a5b030de33878acf088e4cff5\qrc_resources.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\mainwindow.ui" />
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\loginwindow.ui" />
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\resources.qrc" />
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\autouic_Debug.stamp" />
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\autouic_Release.stamp" />
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\autouic_MinSizeRel.stamp" />
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\integration_crudd_autogen\autouic_RelWithDebInfo.stamp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B6DE414E-3A97-35CF-B29F-77D755A1E940}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{CFF4CD62-9D75-35F3-99B5-C4EE76C32591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5BE5E0EE-5D14-3655-AD14-BDFB611FE1DE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\CMakeFiles\20d68d749cfd8ca846f8b03d550d76e0\integration_crudd_build.cmake.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\CMakeFiles\85a611b168fae9b45593aa0f5d8d19e3\integration_crudd_qmlimportscan.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\CMakeFiles\integration_crudd_qmlimportscan" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{B6DE414E-3A97-35CF-B29F-77D755A1E940}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

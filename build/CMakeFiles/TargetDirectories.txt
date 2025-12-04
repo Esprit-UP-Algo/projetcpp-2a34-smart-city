@@ -1,0 +1,4 @@
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd.dir
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_qmlimportscan.dir
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/ZERO_CHECK.dir

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LoginWindow</class>
+ <widget class="QDialog" name="LoginWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1411</width>
+    <height>671</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Connexion - Système de Gestion</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: #e0f7fa;
+}</string>
+  </property>
+  
+  <!-- Tab Widget pour la connexion -->
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>0</y>
+     <width>1411</width>
+     <height>671</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="tab_6">
+    <attribute name="title">
+     <string>connexion🔐</string>
+    </attribute>
+    
+    <!-- Logo -->
+    <widget class="QLabel" name="label_21">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>160</y>
+       <width>521</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/assets/logo.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    
+    <!-- Email -->
+    <widget class="QLabel" name="label_19">
+     <property name="geometry">
+      <rect>
+       <x>830</x>
+       <y>180</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 11pt "Segoe UI";
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>Email📧</string>
+     </property>
+    </widget>
+    
+    <widget class="QLineEdit" name="lineEdit_cin_2">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>220</y>
+       <width>261</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 11pt;
+    background-color: #3a3a3a;
+    color: white;
+}</string>
+     </property>
+     <property name="placeholderText">
+      <string>Entrez votre email</string>
+     </property>
+    </widget>
+    
+    <!-- Mot de passe -->
+    <widget class="QLabel" name="label_20">
+     <property name="geometry">
+      <rect>
+       <x>820</x>
+       <y>310</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 11pt "Segoe UI";
+color: white;</string>
+     </property>
+     <property name="text">
+      <string>mot de passe🔐</string>
+     </property>
+    </widget>
+    
+    <widget class="QLineEdit" name="lineEdit_cin_3">
+     <property name="geometry">
+      <rect>
+       <x>870</x>
+       <y>340</y>
+       <width>271</width>
+       <height>81</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit {
+    padding: 10px;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 11pt;
+    background-color: #3a3a3a;
+    color: white;
+}</string>
+     </property>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+     <property name="placeholderText">
+      <string>Entrez votre mot de passe</string>
+     </property>
+    </widget>
+    
+    <!-- Bouton oeil pour afficher/masquer mot de passe -->
+    <widget class="QLabel" name="label_25">
+     <property name="geometry">
+      <rect>
+       <x>1150</x>
+       <y>370</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>👁️</string>
+     </property>
+    </widget>
+    
+    <!-- Boutons de connexion -->
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>1090</x>
+       <y>450</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 12pt;
+}
+QPushButton:hover {
+    background-color: #4cae4c;
+}</string>
+     </property>
+     <property name="text">
+      <string>se connecter✅</string>
+     </property>
+    </widget>
+    
+    <widget class="QPushButton" name="btnMotDePasseOublie">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>450</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: transparent;
+    color: #5cb85c;
+    border: none;
+    padding: 8px;
+    text-decoration: underline;
+    font-size: 10pt;
+}
+QPushButton:hover {
+    color: #4cae4c;
+}</string>
+     </property>
+     <property name="text">
+      <string>mot de passe oublié?🔑❓</string>
+     </property>
+    </widget>
+    
+    <!-- Reconnaissance faciale -->
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>500</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 11pt;
+}
+QPushButton:hover {
+    background-color: #286090;
+}</string>
+     </property>
+     <property name="text">
+      <string>FaceRecognition👁️📱</string>
+     </property>
+    </widget>
+    
+    <widget class="QPushButton" name="faceLoginButton">
+     <property name="geometry">
+      <rect>
+       <x>810</x>
+       <y>560</y>
+       <width>171</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 11pt;
+}
+QPushButton:hover {
+    background-color: #286090;
+}</string>
+     </property>
+     <property name="text">
+      <string>Connexion Faciale👤</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

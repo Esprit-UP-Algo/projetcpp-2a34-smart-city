@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource>
+        <!-- Logo can be added later if needed -->
+        <file>qml/AlertMap.qml</file>
+        <file>assets/c__Users_anisk_AppData_Roaming_Cursor_User_workspaceStorage_222809712738002fa20cdf442d8feefc_images_image-000e32bd-7527-43bf-b331-c1b120b7bd4a.png</file>
+        <file>assets/logo.png</file>
+    </qresource>
+</RCC>
+

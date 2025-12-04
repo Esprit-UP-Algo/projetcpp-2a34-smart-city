@@ -1,0 +1,32 @@
+^C:\USERS\MALEK\ONEDRIVE\BUREAU\SMARTCITY ARDUINO\SMARTCITY\SMARTCITY\BUILD\CMAKEFILES\20D68D749CFD8CA846F8B03D550D76E0\INTEGRATION_CRUDD_BUILD.CMAKE.RULE
+setlocal
+cd "C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+call "C:\Users\malek\OneDrive\Bureau\smartcity arduino\smartcity\smartcity\build\.qt\bin\qt_setup_tool_path.bat" C:/Qt/6.7.3/msvc2022_64/bin/qmlimportscanner.exe "@C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/.qt/qml_imports/integration_crudd_build.rsp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MALEK\ONEDRIVE\BUREAU\SMARTCITY ARDUINO\SMARTCITY\SMARTCITY\BUILD\CMAKEFILES\85A611B168FAE9B45593AA0F5D8D19E3\INTEGRATION_CRUDD_QMLIMPORTSCAN.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\MALEK\ONEDRIVE\BUREAU\SMARTCITY ARDUINO\SMARTCITY\SMARTCITY\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity" "-BC:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build" --check-stamp-file "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

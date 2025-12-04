@@ -1,0 +1,2 @@
+-- Check RFID_UID values for specific employees
+SELECT CIN, NOM, RFID_UID FROM EMPLOYE WHERE CIN IN (12358946, 99999999);

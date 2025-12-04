@@ -1,0 +1,9 @@
+-rootPath
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity
+-cmake-output
+-output-file
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/.qt/qml_imports/integration_crudd_build.cmake
+-importPath
+C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build
+-importPath
+C:/Qt/6.7.3/msvc2022_64/qml

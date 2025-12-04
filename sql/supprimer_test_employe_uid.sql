@@ -1,0 +1,26 @@
+-- Script SQL pour supprimer "test Employe" avec son UID spécifique
+-- Basé sur l'image: CIN=99999999, UID=3F93CFC4
+
+-- Vérifier l'employé avant suppression
+SELECT 'EMPLOYÉ TROUVÉ - AVANT SUPPRESSION:' as STATUT;
+SELECT CIN, NOM, PRENOM, EMAIL, RFID_UID FROM EMPLOYE 
+WHERE CIN = 99999999 
+AND NOM = 'test' 
+AND PRENOM = 'Employe'
+AND RFID_UID = '3F93CFC4';
+
+-- Supprimer l'employé test
+DELETE FROM EMPLOYE 
+WHERE CIN = 99999999 
+AND NOM = 'test' 
+AND PRENOM = 'Employe'
+AND RFID_UID = '3F93CFC4';
+
+-- Vérifier après suppression
+SELECT 'APRÈS SUPPRESSION - VÉRIFICATION:' as STATUT;
+SELECT COUNT(*) as NOMBRE_EMPLOYES_TEST_RESTANTS FROM EMPLOYE 
+WHERE NOM = 'test' AND PRENOM = 'Employe';
+
+-- Afficher les employés restants
+SELECT 'TOUS LES EMPLOYÉS RESTANTS:' as STATUT;
+SELECT CIN, NOM, PRENOM, EMAIL, RFID_UID FROM EMPLOYE ORDER BY CIN;

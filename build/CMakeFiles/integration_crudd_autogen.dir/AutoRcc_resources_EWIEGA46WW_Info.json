@@ -1,0 +1,35 @@
+{
+	"BUILD_DIR" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/integration_crudd_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity",
+	"CMAKE_SOURCE_DIR" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Visual Studio 17 2022",
+	"INCLUDE_DIR" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/integration_crudd_autogen/include",
+	"INCLUDE_DIR_Debug" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/integration_crudd_autogen/include_Debug",
+	"INCLUDE_DIR_MinSizeRel" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/integration_crudd_autogen/include_MinSizeRel",
+	"INCLUDE_DIR_RelWithDebInfo" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/integration_crudd_autogen/include_RelWithDebInfo",
+	"INCLUDE_DIR_Release" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/integration_crudd_autogen/include_Release",
+	"INPUTS" : 
+	[
+		"C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/qml/AlertMap.qml",
+		"C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/assets/logo.png",
+		"C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/assets/c__Users_anisk_AppData_Roaming_Cursor_User_workspaceStorage_222809712738002fa20cdf442d8feefc_images_image-000e32bd-7527-43bf-b331-c1b120b7bd4a.png"
+	],
+	"LOCK_FILE" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : true,
+	"OPTIONS" : [ "--no-zstd", "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "C:/Qt/6.7.3/msvc2022_64/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [],
+	"SETTINGS_FILE" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SETTINGS_FILE_Debug" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used_Debug.txt",
+	"SETTINGS_FILE_MinSizeRel" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used_MinSizeRel.txt",
+	"SETTINGS_FILE_RelWithDebInfo" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used_RelWithDebInfo.txt",
+	"SETTINGS_FILE_Release" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/build/CMakeFiles/integration_crudd_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used_Release.txt",
+	"SOURCE" : "C:/Users/malek/OneDrive/Bureau/smartcity arduino/smartcity/smartcity/resources.qrc",
+	"USE_BETTER_GRAPH" : false,
+	"VERBOSITY" : 0
+}

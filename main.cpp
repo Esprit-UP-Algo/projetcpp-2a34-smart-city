@@ -4,12 +4,21 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QMessageBox>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QTimer>
+#include <QDialog>
+#include <QVBoxLayout>
 #include "connection.h"
 #include "mainwindow.h"
+#include "loginwindow.h"
+#include "serialreader.h"
+#include "employee.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    qDebug() << "=== APPLICATION DÉMARRÉE ===";
 
     // Style de l'application
     app.setStyle("Fusion");
@@ -40,10 +49,85 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    MainWindow window;
-    window.setWindowTitle("Gestion Intégrée - Employés & Équipements");
-    window.resize(1400, 700);
-    window.show();
+    // Initialiser la colonne RFID si nécessaire
+    employee::ajouterColonneRFID();
+
+    // Initialize SerialReader for RFID
+    SerialReader *reader = new SerialReader();
+    reader->openPort("COM5");
+
+    
+    // Variables pour les fenêtres
+    LoginWindow *loginWindow = new LoginWindow();
+    MainWindow *mainWindow = nullptr;
+    bool rfidAuthenticated = false;
+    
+    // Connecter le signal RFID pour ouvrir automatiquement la fenêtre principale
+    QObject::connect(reader, &SerialReader::uidReceived, [&](QString uid){
+        qDebug() << "📡 UID RFID reçu :" << uid;
+
+        // Vérifier si l'UID existe dans la base de données avec requête directe
+        QSqlQuery query;
+        query.prepare("SELECT CIN, NOM, PRENOM FROM EMPLOYE WHERE RFID_UID = :rfid_uid");
+        query.bindValue(":rfid_uid", uid);
+        
+        qDebug() << "🔍 Requête RFID (main.cpp) - UID recherché:" << uid;
+        
+        if (query.exec() && query.next()) {
+            QString cin = query.value(0).toString();
+            QString nom = query.value(1).toString();
+            QString prenom = query.value(2).toString();
+            QString nomEmploye = nom + " " + prenom;
+            
+            qDebug() << "✅ Accès autorisé pour :" << nomEmploye << "(CIN:" << cin << ")";
+            
+            // Marquer l'authentification RFID comme réussie
+            rfidAuthenticated = true;
+            
+            // Afficher le message de succès sur la fenêtre de connexion
+            QMessageBox::information(loginWindow, "✅ Accès Autorisé", 
+                                    QString("👋 Bienvenue %1!\n\n🔓 Accès autorisé par carte RFID\n🆔 CIN: %2\n🎫 UID: %3")
+                                    .arg(nomEmploye).arg(cin).arg(uid));
+            
+            // Fermer la fenêtre de connexion
+            if (loginWindow && loginWindow->isVisible()) {
+                loginWindow->close();
+                loginWindow = nullptr;
+            }
+            
+            // Créer et afficher la fenêtre principale
+            if (!mainWindow) {
+                mainWindow = new MainWindow();
+                mainWindow->setWindowTitle("Gestion Intégrée - Employés & Équipements");
+                mainWindow->resize(1400, 700);
+                mainWindow->show();
+            }
+            
+        } else {
+            qDebug() << "❌ Accès refusé - UID inconnu :" << uid;
+            if (!query.exec()) {
+                qDebug() << "❌ Erreur requête RFID:" << query.lastError().text();
+            }
+            QMessageBox::warning(nullptr, "❌ Accès Refusé", 
+                               "🚫 Carte RFID non reconnue!\n\n"
+                               "Veuillez contacter l'administrateur\n"
+                               "ou utiliser une carte autorisée.");
+        }
+    });
+
+    // Afficher la fenêtre de connexion au démarrage
+    loginWindow->show();
+    
+    // Si la connexion manuelle réussit, afficher la fenêtre principale
+    QObject::connect(loginWindow, &QDialog::accepted, [&](){
+        if (!mainWindow) {
+            mainWindow = new MainWindow();
+            mainWindow->setWindowTitle("Gestion Intégrée - Employés & Équipements");
+            mainWindow->resize(1400, 700);
+            mainWindow->show();
+        }
+    });
 
     return app.exec();
 }
+
